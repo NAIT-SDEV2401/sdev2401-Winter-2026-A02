@@ -2367,6 +2367,87 @@
         -37.58989606584828,
         31.994062151227638
       ]
+    },
+    {
+      "id": "__43L86vxrJYsl-ZZud5C",
+      "type": "freedraw",
+      "x": 874.9129751572398,
+      "y": 444.9542056530241,
+      "width": 0.0001,
+      "height": 0.0001,
+      "angle": 0,
+      "strokeColor": "#e03131",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aT",
+      "roundness": null,
+      "seed": 1262471472,
+      "version": 3,
+      "versionNonce": 93054928,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1767981817750,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.0001,
+          0.0001
+        ]
+      ],
+      "pressures": [],
+      "simulatePressure": true,
+      "lastCommittedPoint": [
+        0.0001,
+        0.0001
+      ]
+    },
+    {
+      "id": "srk9QtVzNLKA9NkAQf2DV",
+      "type": "text",
+      "x": 342.505585834323,
+      "y": -373.5642269641635,
+      "width": 367.7758483886719,
+      "height": 45,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aU",
+      "roundness": null,
+      "seed": 1582905808,
+      "version": 23,
+      "versionNonce": 774473520,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1767981844528,
+      "link": null,
+      "locked": false,
+      "text": "Virtual Environments.",
+      "fontSize": 36,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Virtual Environments.",
+      "autoResize": true,
+      "lineHeight": 1.25
     }
   ],
   "appState": {
