@@ -20,4 +20,11 @@ from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # where we're going to add
+    # a whole bunch of urls that's going link to our
+    # application.
+
 ]
+
+
+
