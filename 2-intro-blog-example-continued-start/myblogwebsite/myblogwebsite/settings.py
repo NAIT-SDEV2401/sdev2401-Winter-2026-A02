@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # we're going to add our blog app
+    "blog", # this makes django aware of our custom app.
 ]
 
 MIDDLEWARE = [
