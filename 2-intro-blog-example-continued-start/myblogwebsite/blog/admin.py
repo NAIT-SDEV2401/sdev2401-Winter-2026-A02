@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+# we're going to import the model
+from .models import Post
+
+# register with the admin.
+admin.site.register(Post)
