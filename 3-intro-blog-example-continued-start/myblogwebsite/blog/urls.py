@@ -6,3 +6,8 @@ from django.urls import path
 from . import views
 # the line above is importing all functions
 # from views in the current folder
+
+# the paths in our app.
+urlspattern = [
+    path('', views.post_list, name='post_list')
+]

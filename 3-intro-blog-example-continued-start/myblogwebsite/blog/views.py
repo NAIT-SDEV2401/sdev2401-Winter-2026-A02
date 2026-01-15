@@ -4,7 +4,7 @@ from django.shortcuts import render
 # that we'll learn more about that essentially
 # returns a template as a response
 
-def home(request):
+def post_list(request):
 
     # the line below is going
     # to be what's passed as the response
