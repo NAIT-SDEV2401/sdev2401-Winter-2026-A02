@@ -8,7 +8,7 @@ from . import views
 # from views in the current folder
 
 # the paths in our app.
-urlspattern = [
+urlpatterns = [
     path('', views.post_list, name='post_list')
 ]
 
