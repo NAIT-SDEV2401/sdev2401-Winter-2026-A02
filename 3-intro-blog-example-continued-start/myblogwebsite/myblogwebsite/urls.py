@@ -27,3 +27,8 @@ urlpatterns = [
     # to the urls inside of our blog folder
     path("", include("blog.urls")),
 ]
+
+
+
+
+
