@@ -12,6 +12,7 @@ from django.utils import timezone
 #    create the file to apply this database table.
 # 3. we need to use python manage.py migrate to apply the table.
 class Post(models.Model):
+    # these below are columns
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
