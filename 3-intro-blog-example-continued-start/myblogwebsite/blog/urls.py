@@ -11,3 +11,8 @@ from . import views
 urlspattern = [
     path('', views.post_list, name='post_list')
 ]
+
+# we're going to add these paths
+# to the project using
+# urls.py inside of myblogwebsite
+# which is the project wide urls.
