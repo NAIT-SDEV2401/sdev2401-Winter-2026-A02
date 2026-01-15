@@ -16,8 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+# include on the line below
+# this is going to allows to include an
+# entire app into our project settings
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # we are going to make a reference
+    # to the urls inside of our blog folder
+    path("", include("blog.urls")),
 ]
