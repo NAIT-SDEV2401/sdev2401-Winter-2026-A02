@@ -20,9 +20,17 @@
         which is based on jinja2
         -->
         {% for post in posts %}
+            <!-- in here we access to "post" which
+             is a single instance of post -->
             <div class="bg-white shadow rounded-xl p-4 mb-4">
-                <p class="text-lg mb-2">Just finished building my portfolio site!</p>
-                <span class="text-sm text-gray-500">May 8, 2025</span>
+                <p class="text-lg mb-2">
+                    <!-- We're going to display data
+                    from the given post in the html -->
+                    {{ post.title }}
+                </p>
+                <span class="text-sm text-gray-500">
+                    May 8, 2025
+            </span>
             </div>
         {% endfor %}
     </div>
