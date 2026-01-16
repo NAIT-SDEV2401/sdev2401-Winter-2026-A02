@@ -12,16 +12,19 @@
             Hello, I'm using a backend framework!
         </h1>
         <!-- We added this line/section. -->
-        <div class="bg-white shadow rounded-xl p-4 mb-4">
-            <p class="text-lg mb-2">Just finished building my portfolio site!</p>
-            <span class="text-sm text-gray-500">May 8, 2025</span>
-        </div>
         <!-- Our first template tag -->
         <!-- <p>{% debug %}</p> -->
         <!-- on the line below we're going to loop through
-            the posts that were passed as context
+        the posts that were passed as context.
+        This is using the django templating language
+        which is based on jinja2
         -->
-        {%  %}
+        {% for post in posts %}
+            <div class="bg-white shadow rounded-xl p-4 mb-4">
+                <p class="text-lg mb-2">Just finished building my portfolio site!</p>
+                <span class="text-sm text-gray-500">May 8, 2025</span>
+            </div>
+        {% endfor %}
     </div>
   </body>
 </html>
