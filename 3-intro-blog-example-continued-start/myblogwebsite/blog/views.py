@@ -8,7 +8,13 @@ from .models import Post
 # returns a template as a response
 
 def post_list(request):
+    # lets get the data from the db
+    posts = Post.objects.all()
+
+
     # one of the things you can do
+    # is put a breakpoint to stop
+    # the request.
     breakpoint()
 
     # the line below is going
