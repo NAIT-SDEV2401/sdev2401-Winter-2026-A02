@@ -15,13 +15,20 @@ def post_list(request):
     # one of the things you can do
     # is put a breakpoint to stop
     # the request.
-    breakpoint()
+    # breakpoint()
+    # most important breakpoint commands
+    # l (show where you are)
+    # n (next line)
+    # c (continue)
 
     # the line below is going
     # to be what's passed as the response
     return render(
         request,
-        'blog/posts_list.html'
+        'blog/posts_list.html',
+        {'posts': posts}
+        # this line above is passing the data
+        # to the template.
     )
     # this is going to look in the templates
     # folder (more on this later.)
