@@ -29,6 +29,13 @@ Books rated by us.
 - BOOKTITLEHERE rated BOOKRATINGHERE
 '''
 # I want you to use the {% for ... %} {% endfor %}
-
+template = Template("""
+Books rated by us.
+{% for book in items %}
+- {{ book.title }} rated {{ book.rating }} {% endfor %}
+""")
 # 2. I want you to add the data to a context
+context = Context(data)
+
 # 3. I want you to use template.render and print out the data.
+print(template.render(context))
