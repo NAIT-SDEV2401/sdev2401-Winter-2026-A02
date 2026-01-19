@@ -18,6 +18,7 @@ data = {
 }
 
 # we're going to tcreate a template here
+# to display information you need to use {{ datahere }} where datahere is a dictionary key
 template = Template("""
 {{ rating_topic }} will have ratings from {{ best_rating }} to {{ worst_rating }}
 where {{ best_rating }} is the best rating.
