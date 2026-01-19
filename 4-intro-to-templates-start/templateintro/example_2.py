@@ -15,7 +15,7 @@ data = {
     "items": [
         {"title": "brave new world", "rating": 4},
         {"title": "1984",  "rating": 5},
-        {"title": "The Great Gatsby", "rating": 4},
+        {"title": "The Great Gatsby", "rating": 3},
         {"title": "Twilight", "rating": 1},
     ]
 }
@@ -30,6 +30,7 @@ Books rated by us.
 - BOOKTITLEHERE rated BOOKRATINGHERE
 '''
 # I want you to use the {% for ... %} {% endfor %}
+# reference in the docs: https://docs.djangoproject.com/en/5.2/ref/templates/language/#tags
 template = Template("""
 Books rated by us.
 {% for book in items %}
