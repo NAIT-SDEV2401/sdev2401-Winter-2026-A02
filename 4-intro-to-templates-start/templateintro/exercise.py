@@ -5,12 +5,18 @@ django.setup()
 
 print("Django environment set up successfully.")
 # everything above this line is needed to create a runnable django file.
-
 # we're going to create an 8 ball question app.
 # install requests (with pip)
+import requests
 # 1. I want you to prompt the user to ask a question.
+question = input("Ask the 8 ball a question: ")
+# below uses the docs here: https://www.eightballapi.com/docs
 # 2. Perform a get request to endpoint "https://www.eightballapi.com/api" and save the reading key
+data_from_api = requests.get("https://www.eightballapi.com/api").json()
+reading = data_from_api["reading"]
 # 3. Perform a get request to endpoint "https://www.eightballapi.com/api/categories"
+categories = requests.get("https://www.eightballapi.com/api/categories").json()
+breakpoint()
 # 4. see if the sentiment of the reading is in the "positive", "negative", "neutral"
 # 5. format the data like so
 '''
