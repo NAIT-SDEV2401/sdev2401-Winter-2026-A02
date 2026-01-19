@@ -1,3 +1,11 @@
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "templateintro.settings")
+django.setup()
+
+print("Django environment set up successfully.")
+# Ignore above this line for now
+
 # we're going take a look at the fundamentals of templates here.
 
 from django.template import Template, Context
