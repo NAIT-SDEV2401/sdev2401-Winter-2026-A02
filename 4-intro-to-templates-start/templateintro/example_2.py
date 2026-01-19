@@ -21,18 +21,21 @@ data = {
 }
 
 # 1. I want you to create a template that will end up like this
+# below is what I want to display
 '''
 Books rated by us.
-- BOOKTITLEHERE rated BOOKRATINGHERE
-- BOOKTITLEHERE rated BOOKRATINGHERE
-- BOOKTITLEHERE rated BOOKRATINGHERE
+- BOOKTITLEHERE rated BOOKRATINGHERE, very good read (IF GREATER OR EQ TO 4)
+- BOOKTITLEHERE rated BOOKRATINGHERE, okay read (IF LT 4)
+- BOOKTITLEHERE rated BOOKRATINGHERE, skip (IF EQ 1)
 - BOOKTITLEHERE rated BOOKRATINGHERE
 '''
 # I want you to use the {% for ... %} {% endfor %}
 template = Template("""
 Books rated by us.
 {% for book in items %}
-- {{ book.title }} rated {{ book.rating }} {% endfor %}
+- {{ book.title }} rated {{ book.rating }}
+  {% if book.rating >= 4 %}very good read{% elif book.rating > 1 %}okay read{% else %}skip{% endif %}
+{% endfor %}
 """)
 # 2. I want you to add the data to a context
 context = Context(data)
