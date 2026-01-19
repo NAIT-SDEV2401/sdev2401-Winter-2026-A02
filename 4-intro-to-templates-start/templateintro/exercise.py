@@ -37,13 +37,21 @@ data = {
     "reading": reading,
     "sentiment": sentiment
 }
-breakpoint()
+
 # 6. create a template that looks like this
 '''
 You asked QUESTIONHERE
 the 8 ball reading is ANSWERHERE it's a SENTIMENT reading.
 you should be worried/happy/not bothered by the answer
 '''
-template = template
+template = Template("""
+You asked {{ question }}
+the 8 ball reading is {{ reading }} it's a {{ sentiment }} reading.
+you should be
+{% if sentiment == "positive" %}happy{% elif sentiment == "negative" %}worried{% else %}not bothered{% endif %}
+by the answer
+""")
 # where worried/happy/not is based on the sentiment
 # 7. create a context based on the data and render the template.
+context = Context(data)
+print(template.render(context))
