@@ -19,8 +19,8 @@ data = {
 
 # we're going to tcreate a template here
 template = Template("""
-RATINGTOPICHERE will have ratings from BESTRATINGHERE to WORSTRATINGHERE
-where BESTRATINGHERE is the best rating.
+{{ rating_topic }} will have ratings from {{ best_rating }} to {{ worst_rating }}
+where {{ best_rating }} is the best rating.
 """)
 
 # put the data into a context
