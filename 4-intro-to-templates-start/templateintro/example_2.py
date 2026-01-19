@@ -27,8 +27,8 @@ Books rated by us.
 - BOOKTITLEHERE rated BOOKRATINGHERE
 - BOOKTITLEHERE rated BOOKRATINGHERE
 - BOOKTITLEHERE rated BOOKRATINGHERE
-
 '''
 # I want you to use the {% for ... %} {% endfor %}
+
 # 2. I want you to add the data to a context
 # 3. I want you to use template.render and print out the data.
