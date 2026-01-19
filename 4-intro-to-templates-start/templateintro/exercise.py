@@ -18,7 +18,13 @@ data = {
     "question": ....
     "reading": ....
     "sentiment": .....
-
 }
-
 '''
+# 6. create a template that looks like this
+'''
+You asked QUESTIONHERE
+the 8 ball reading is ANSWERHERE it's a SENTIMENT reading.
+you should be worried/happy/not bothered by the answer
+'''
+# where worried/happy/not is based on the sentiment
+# 7. create a context based on the data and render the template.
