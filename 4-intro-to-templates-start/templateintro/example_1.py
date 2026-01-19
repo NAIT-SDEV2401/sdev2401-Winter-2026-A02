@@ -9,3 +9,14 @@ data = {
     "worst_rating": 0,
 }
 
+# we're going to tcreate a template here
+template = Template("""
+RATINGTOPICHERE will have ratings from BESTRATINGHERE to WORSTRATINGHERE
+where BESTRATINGHERE is the best rating.
+""")
+
+# put the data into a context
+context = Context(data)
+
+# context that we have here.
+print(template.render(context))
