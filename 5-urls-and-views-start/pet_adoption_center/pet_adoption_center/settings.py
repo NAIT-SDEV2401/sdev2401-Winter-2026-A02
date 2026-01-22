@@ -29,7 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# these installed apps will have
+# built in apps that help you be secure
+# in your application.
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,6 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # You can add your own apps below.
+    "adoption",
+    # this is going to look at the adoption
+    # folder in the "pet_adoption_center" project
 ]
 
 MIDDLEWARE = [
@@ -51,6 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "pet_adoption_center.urls"
 
+# normally there's not much to do here
+# except in dirs next class we'll add
+# a directory DIRS for base templates
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
