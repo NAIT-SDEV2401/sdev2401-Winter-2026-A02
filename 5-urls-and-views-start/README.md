@@ -27,7 +27,7 @@ activate the virtual environment:
 `pip freeze` this should show the requirements that are installed in the virtual environment.
 
 
-### 4. Navigate inside the `urls_views_fundamentals` directory and initialize a new "app" named "pet_adoption"
+### 3. Navigate inside the `urls_views_fundamentals` directory and initialize a new "app" named "pet_adoption"
 - remember from the first example that when you're starting a new project you need to initialize the database tables.
 `python manage.py migrate`
 - let's create a new app called pet adoption helper
@@ -35,7 +35,7 @@ activate the virtual environment:
 - Note you should now see a new directory called `pet_adoption` in the project directory.
 
 
-### 5. Let's add our first template to the `pet_adoption` app
+### 4. Let's add our first template to the `pet_adoption` app
 - Create a folder called `templates` in the pet_adoption directory, and in that folder named `pet_adoption`
   - Django will look for templates in this directory.
   - Note: if you take a look at the `settings.py` file in the project directory, you'll see that this is where django will look for templates. With the lines
@@ -57,7 +57,7 @@ TEMPLATES = [
 ```
 - Inside the `pet_adoption/templates/pet_adoption` directory, copy the file called `home_page.html`, this will be our home page template.
 
-### 6. Let's add our first view to the `pet_adoption` app
+### 5. Let's add our first view to the `pet_adoption` app
 - The view is going to conatian the logic that will connect the url to the template, (we'll be adding the url next!).
 
 - Open the `views.py` file in the `pet_adoption` directory and add the following code:
@@ -70,7 +70,7 @@ def home_page(request):
 ```
 - now this view is going to return our template and we don't have any data to pass to, but we don't have this hooked up to a url yet, let's do that next.
 
-### 7. Let's add our first url to the `pet_adoption` app
+### 6. Let's add our first url to the `pet_adoption` app
 - Create a file called `urls.py` in the `pet_adoption` directory, this is where we'll add our urls for this app.
   - This file will hold the urls mapped to each view in the app.
 - Open the `urls.py` file and add the following code:
@@ -83,7 +83,7 @@ urlpatterns = [
 ```
 - Now our entire project doesn't know about this url yet so we need to add it to the project level `urls.py` file.
 
-### 8. Let's add our first url to the project level `urls.py` file
+### 7. Let's add our first url to the project level `urls.py` file
 - Open the `urls_views_fundamentals/settings.py` and add the
 `pet_adoption` app to the `INSTALLED_APPS` list:
 ```python
@@ -119,7 +119,7 @@ urlpatterns = [
 
   ![home page](images/home_page.png)
 
-### 9. Let's add some data to the template
+### 8. Let's add some data to the template
 - Open the `views.py` file in the `pet_adoption` directory and add the following code and pass the data to the template:
 
 ```python
@@ -183,7 +183,7 @@ def home_page(request):
   - You it should look like this:
   ![home page](images/home_page_with_data.png)
 
-### 10. Let's add a second page to the app that we'll use to show the details of a pet.
+### 9. Let's add a second page to the app that we'll use to show the details of a pet.
 
 - Add the template `pet_details.html` to the `pet_adoption/templates/pet_adoption` directory.
   - Note: you'll see currently that we don't have any jinja template tags in this template.
@@ -220,7 +220,7 @@ urlpatterns = [
   - So that last part of the url is dynamic, you can change it but it will still show the same page (but this will change when we pass data to the template)
 
 
-### 11. Let's pass data as context to the pet details page.
+### 10. Let's pass data as context to the pet details page.
 - Let's go to the `views.py` file and add the following code to the `pet_type_details` view, and pass data to the template:
 ```python
 # Let's add a new view to handle the pet type details
@@ -248,7 +248,7 @@ def pet_type_details(request, pet_type):
   - `http://localhost:8000/pet_type/parrot/`
 - You should see that the page changes based on the pet type that is passed in the url.
 
-### 12. Let's get the data from the dictionary render it to the template.
+### 11. Let's get the data from the dictionary render it to the template.
 - Let's go to the `views.py` file and add the following code to the `pet_type_details` view, and pass data to the template:
 ```python
 # ... other data ...
@@ -289,7 +289,7 @@ def pet_type_details(request, pet_type):
   - This is because the pet type is not in the dictionary and it's returning None, which is causing an error in the template.
   - Let's fix this by adding a check to see if the pet type exists in the dictionary before rendering the template.
 
-### 13. Let's add an error to the template if the pet type doesn't exist.
+### 12. Let's add an error to the template if the pet type doesn't exist.
 - Let's go to the template and change the section above so that it looks like the following:
 ```html
 <section>

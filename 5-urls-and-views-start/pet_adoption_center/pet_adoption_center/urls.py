@@ -1,5 +1,5 @@
 """
-URL configuration for myblogwebsite project.
+URL configuration for pet_adoption_center project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,20 +16,8 @@ Including another URLconf
 """
 
 from django.contrib import admin
-# include on the line below
-# this is going to allows to include an
-# entire app into our project settings
-from django.urls import path, include
+from django.urls import path
 
-# the entire project
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # we are going to make a reference
-    # to the urls inside of our blog folder
-    path("", include("blog.urls")),
 ]
-
-
-
-
-
