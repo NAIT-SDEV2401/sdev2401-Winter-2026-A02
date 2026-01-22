@@ -7,9 +7,12 @@ def home_page(request):
     # have some type of logic here
     # that will do somethign with the
     # request
-
+    name = "Humane Society"
     # return a response.
     return render(
         request, # pass this to the response
-        "adoption/home_page.html" # the template
+        "adoption/home_page.html", # the template
+        { "name": name } # the context passed to
+        # the template, and in the template we can
+        # use that name variable.
     )

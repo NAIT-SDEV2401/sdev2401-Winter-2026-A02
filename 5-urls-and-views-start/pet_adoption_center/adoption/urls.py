@@ -13,7 +13,8 @@ from .views import home_page
 
 # we need to create the mappings
 # connecting the url to a view.
-url_patterns = [
+# remove the underscore.
+urlpatterns = [
     path(
         "", # this is the url route "" is /
         home_page, # this is view
