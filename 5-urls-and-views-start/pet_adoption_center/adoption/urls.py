@@ -12,5 +12,11 @@ from .views import home_page
 # we need to create the mappings
 # connecting the url to a view.
 url_patterns = [
-
+    path(
+        "", # this is the url route
+        home_page, # this is view
+        name="home_page" # we'll use this
+        # the template later when making
+        # a link to this page.
+    )
 ]
