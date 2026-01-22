@@ -25,6 +25,8 @@
              the pet types, but it's a dictionary so
              it's slightly different -->
             {% for pet_type, pet in pet_types.items %}
+            <!-- the reason we use pet_types.items
+             is because it's a dictionary -->
                 <li class="mb-2">
                     <!-- each pet instance -->
                     {{ pet_type }}
