@@ -1,3 +1,5 @@
+# this is the mapping for the adoption app.
+
 # import the path from django
 from django.urls import path
 
@@ -13,7 +15,7 @@ from .views import home_page
 # connecting the url to a view.
 url_patterns = [
     path(
-        "", # this is the url route
+        "", # this is the url route "" is /
         home_page, # this is view
         name="home_page" # we'll use this
         # the template later when making
