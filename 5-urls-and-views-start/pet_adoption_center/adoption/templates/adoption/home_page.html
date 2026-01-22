@@ -24,6 +24,12 @@
             <!-- we're going to be looping through
              the pet types, but it's a dictionary so
              it's slightly different -->
+            {% for pet_type, pet in pet_types.items %}
+                <li class="mb-2">
+                    <!-- each pet instance -->
+                    {{ pet_type }}
+                </li>
+            {% endfor %}
             </ul>
         </section>
     </div>
