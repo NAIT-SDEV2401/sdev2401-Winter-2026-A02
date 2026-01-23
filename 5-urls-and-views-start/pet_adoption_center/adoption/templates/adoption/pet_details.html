@@ -19,7 +19,9 @@
             <!-- let's add an if statement to handle the no data case -->
             {% if pet_data %}
             <p class="text-lg mb-2">
-                The traits of {{ pet_type }} are {{ pet_data.traits }}
+                The traits of {{ pet_type }}
+                are {{ pet_data.traits | lower }}
+                <!-- we're just making the traits lower case above -->
             </p>
             <p class="text-lg mb-2">
                 You should have a {{ pet_data.lifestyle_fit }}
