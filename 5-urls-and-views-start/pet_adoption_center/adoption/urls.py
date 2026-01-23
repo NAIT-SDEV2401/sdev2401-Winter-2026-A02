@@ -5,7 +5,11 @@ from django.urls import path
 
 # we need to import the views
 # from our views.py file.
-from .views import home_page
+from .views import (
+    home_page,
+    pet_type_details
+)
+# above, import the view.
 
 urlpatterns = [
     path(
@@ -14,7 +18,13 @@ urlpatterns = [
         name="home_page" # we'll use this
         # the template later when making
         # a link to this page.
+    ),
+    path(
+        "pet_type/<str:pet_type>/",
+        pet_type_details,
+        name="pet_type_details"
     )
+
 ]
 
 
