@@ -44,3 +44,17 @@ def home_page(request):
         # the template, and in the template we can
         # use that name variable.
     )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
