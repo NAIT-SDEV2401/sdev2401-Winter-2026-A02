@@ -52,10 +52,19 @@ def pet_type_details(request, pet_type):
     # above that we're going to define the
     # pet type in the adoption/urls.py path.
 
+    # we're going to get the details of the
+    # animal using the .get method
+    pet_data = PET_TYPES.get(pet_type, None)
+    # in the above it's going to get the data
+    # or be None
+
     return render(
         request,
-        "adoption/pet_details.html" # we have not created
+        "adoption/pet_details.html", # we have not created
         # yet.
+        {
+            "pet_type": pet_type
+        }
     )
 
 
