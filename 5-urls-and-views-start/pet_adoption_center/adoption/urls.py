@@ -21,6 +21,10 @@ urlpatterns = [
     ),
     path(
         "pet_type/<str:pet_type>/",
+        # above the <str:pet_type> is saying
+        # in the url you are expecting a string
+        # that is going to be a param to the
+        # the view.
         pet_type_details,
         name="pet_type_details"
     )
