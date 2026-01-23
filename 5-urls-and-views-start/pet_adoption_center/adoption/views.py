@@ -63,7 +63,8 @@ def pet_type_details(request, pet_type):
         "adoption/pet_details.html", # we have not created
         # yet.
         {
-            "pet_type": pet_type
+            "pet_type": pet_type,
+            "pet_data": pet_data
         }
     )
 
