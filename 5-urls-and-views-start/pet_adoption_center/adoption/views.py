@@ -45,6 +45,18 @@ def home_page(request):
         # use that name variable.
     )
 
+# I'm going to add view to display the details of
+# be itself.
+# we're going to use url parameter in our detail view
+def pet_type_details(request, pet_type):
+    # above that we're going to define the
+    # pet type in the adoption/urls.py path.
+
+    return render(
+        request,
+        "adoption/pet_details.html" # we have not created
+        # yet.
+    )
 
 
 
