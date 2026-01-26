@@ -30,7 +30,7 @@
                     We're going to use the "pet_type_details" url name
                     and also pass in the pet_type as an argument to that url
                     -->
-                    <a href="#">
+                    <a href="{% url 'pet_type_details' pet_type=pet_type %}">
                         <!-- This is the key-->
                         <strong>{{ pet_type }}</strong>
                         <div>
