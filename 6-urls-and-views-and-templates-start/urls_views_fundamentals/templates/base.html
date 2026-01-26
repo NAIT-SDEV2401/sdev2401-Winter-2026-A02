@@ -14,7 +14,18 @@
   </head>
   <body>
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+        <!-- We're going to add a url to the the home page in a navbar. -->
+        <nav class="bg-gray-800 p-4">
+            <div class="max-w-2xl mx-auto flex justify-between items-center">
+                <!-- We're going to use the url template tag
+                Note that 'home_page' is the name of the url
+                of the home_page path in the pet_adoption app urls.py
+                -->
+                <a href="{% url 'home_page' %}" class="text-white text-lg font-semibold">Pet Adoption App</a>
+            </div>
+        </nav>
+        {% endblock %}
     </header>
     <main>
         {% block content %}{% endblock %}

@@ -23,13 +23,21 @@
                 The items property returns a list of tuples, where each tuple is a key-value pair.
             -->
             {% for pet_type, pet in pet_types.items %}
+
                 <li class="mb-2">
-                    <!-- This is the key-->
-                    <strong>{{ pet_type }}</strong>
-                    <div>
-                        <!-- This is the whic hsi a dictionary itself -->
-                        {{pet.traits}}
-                    </div>
+                    <!-- I've made everything in the link the list item
+                    part of a link.
+                    We're going to use the "pet_type_details" url name
+                    and also pass in the pet_type as an argument to that url
+                    -->
+                    <a href="#">
+                        <!-- This is the key-->
+                        <strong>{{ pet_type }}</strong>
+                        <div>
+                            <!-- This is the whic hsi a dictionary itself -->
+                            {{pet.traits}}
+                        </div>
+                    </a>
                 </li>
             {% endfor %}
             </ul>

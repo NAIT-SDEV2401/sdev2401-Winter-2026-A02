@@ -6,3 +6,10 @@ urlpatterns = [
     # detail page
     path("pet_type/<str:pet_type>/", pet_type_details, name="pet_type_details"),
 ]
+
+
+
+
+
+
+
