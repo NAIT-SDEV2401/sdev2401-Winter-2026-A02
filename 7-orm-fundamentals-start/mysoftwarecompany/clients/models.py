@@ -1,5 +1,9 @@
 from django.db import models
 
+# you don't have to know how the migrations run
+# all you need to know is that it's creating/altering
+# the table.
+
 # classes that inherit from models.Model are going
 # to be what's in the database.
 class Company(models.Model):
