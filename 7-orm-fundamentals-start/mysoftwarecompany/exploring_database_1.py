@@ -32,4 +32,3 @@ cat_company = Company.objects.get(email="cat@test.com")
 
 print("Selecting a single instance")
 print(cat_company)
-breakpoint()
