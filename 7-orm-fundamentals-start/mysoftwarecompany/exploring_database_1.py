@@ -5,3 +5,5 @@ django.setup()
 
 print("Django environment set up successfully.")
 
+# We're going to import the model so that we
+# can interact with it.
