@@ -25,5 +25,6 @@ acme_company = Company.objects.filter(name="Acme Inc.")
 # Acme Inc. is just what I used you can use somethign different.
 
 print("Company filtered for acme inc")
-print(acme_company)
-breakpoint()
+print(acme_company) # this is still queryset which is multiple rows
+
+# select a single instance
