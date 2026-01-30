@@ -46,11 +46,22 @@ print("Creating items")
 # print(new_company)
 
 print("Using get or create")
-#
-second_company = Company.objects.get_or_create(
+
+# second_company below is the instance
+# created if the instance we created or not.
+second_company, created = Company.objects.get_or_create(
     name="Garys BBQ",
     email="GBBQ@test.com"
 )
 
 print("This will be fetched or created")
 print(second_company)
+
+
+# Let's talk about updating the instance
+# Update table where in SQL
+# we already have the instances
+second_company.name = "Gary and Ricks Steakhouse"
+second_company.email = "GRS@test.com"
+# apply the save
+second_company.save() # this commits to the database.
