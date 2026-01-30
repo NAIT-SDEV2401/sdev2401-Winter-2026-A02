@@ -11,7 +11,10 @@ class Company(models.Model):
     name = models.CharField(max_length=100)
     # this goign to make a column in the table named
     # name with max character length of 100
-    email = models.EmailField(max_length=100, unique=True)
+    email = models.EmailField(
+        max_length=100,
+        unique=True
+    )
     # this goign to make a column in the table named
     # email with max character length of 100
     # except it needs to unique
