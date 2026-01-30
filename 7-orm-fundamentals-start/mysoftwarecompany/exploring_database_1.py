@@ -61,7 +61,11 @@ print(second_company)
 # Let's talk about updating the instance
 # Update table where in SQL
 # we already have the instances
-second_company.name = "Gary and Ricks Steakhouse"
-second_company.email = "GRS@test.com"
-# apply the save
-second_company.save() # this commits to the database.
+# second_company.name = "Gary and Ricks Steakhouse"
+# second_company.email = "GRS@test.com"
+# # apply the save
+# second_company.save() # this commits to the database.
+
+
+# delete
+second_company.delete()
