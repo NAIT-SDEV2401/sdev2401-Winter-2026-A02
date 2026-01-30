@@ -28,3 +28,8 @@ print("Company filtered for acme inc")
 print(acme_company) # this is still queryset which is multiple rows
 
 # select a single instance
+cat_company = Company.objects.get(email="cat@test.com")
+
+print("Selecting a single instance")
+print(cat_company)
+breakpoint()
