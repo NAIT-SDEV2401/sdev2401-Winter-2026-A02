@@ -32,3 +32,13 @@ cat_company = Company.objects.get(email="cat@test.com")
 
 print("Selecting a single instance")
 print(cat_company)
+
+# Creating an item in the database.
+# equivalent to Insert Into in SQL
+new_company = Company.objects.create(
+    name="Dog Walking co",
+    email="dog@test.com"
+)
+
+print(new_company)
+breakpoint()
