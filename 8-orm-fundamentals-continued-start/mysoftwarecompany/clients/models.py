@@ -12,11 +12,9 @@ class Company(models.Model):
 
 
 '''
-
     # date fields
     # the auto_now_add Automatically set the date when the record is created
     date_joined = models.DateField(auto_now_add=True)
     # the
     updated_at = models.DateField(auto_now=True)
-
 '''
