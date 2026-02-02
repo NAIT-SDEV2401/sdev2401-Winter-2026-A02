@@ -7,7 +7,7 @@ from .models import Company
 
 def list_companies(request):
 
-    # get all companies
+    # get all companies from the database.
     companies = Company.objects.all()
 
     return render(
@@ -17,8 +17,3 @@ def list_companies(request):
             "companies": companies
         }
     )
-
-    # return # a response
-        # request
-        # template name
-        # pass companies into the context
