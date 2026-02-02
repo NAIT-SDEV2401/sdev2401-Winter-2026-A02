@@ -14,6 +14,10 @@ class Company(models.Model):
         null=True,
         default=""
     )
+    # one thing we're to add the time that the object has been created
+    created_at = models.DateTimeField(auto_now_add=True)
+    # and we're going to add the time that it was last updated
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     def __str__(self):
