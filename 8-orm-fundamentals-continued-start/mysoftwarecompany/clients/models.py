@@ -6,6 +6,15 @@ class Company(models.Model):
 
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
+    # let's make changes to the model.
+    # we're going to add a nullable field so you don't necessarily
+    # need it.
+    description = models.TextField(
+        blank=True,
+        null=True,
+        default=""
+    )
+
 
     def __str__(self):
         return self.name

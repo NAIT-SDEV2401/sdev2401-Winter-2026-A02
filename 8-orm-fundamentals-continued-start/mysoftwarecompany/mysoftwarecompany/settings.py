@@ -57,7 +57,8 @@ ROOT_URLCONF = "mysoftwarecompany.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # in the settings update the DIRS to include templates.
+        "DIRS": [BASE_DIR / "templates"], # BASE_DIR / "templates" is a path.
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
