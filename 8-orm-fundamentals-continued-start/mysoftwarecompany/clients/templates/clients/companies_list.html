@@ -21,6 +21,9 @@
                         {{ company.description }}
                     </p>
                     {% endif %}
+                    <!-- Add the fields for date time -->
+                    <p>Created: {{ company.created_at }}</p>
+                    <p>Updated at: {{company.updated_at }}</p>
                 </li>
             {% endfor %}
             </ul>
