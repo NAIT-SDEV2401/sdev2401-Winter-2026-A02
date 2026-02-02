@@ -19,6 +19,10 @@ class Company(models.Model):
     # and we're going to add the time that it was last updated
     updated_at = models.DateTimeField(auto_now=True)
 
+    # these are in UTC
+    # you want to keep times in UTC in your database so that it's easier to
+    # convert to the timezones.
+    # Change it in your view.
 
     def __str__(self):
         return self.name
