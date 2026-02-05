@@ -14,11 +14,20 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return F"Role(name={self.name})"
+
 # create a Role model
+class Role(models.Model):
     # field name Charfield unique, max len 50
+    name = models.CharField(max_length=50, unique=True)
     # field description TextField blank and null
-    # created_at
-    # updated_at
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 # the employee will have a foreign key to company
 # employee -> company (single)
@@ -42,6 +51,14 @@ class Employee(models.Model):
         on_delete=models.CASCADE,
         related_name='employees'
     )
+    # I want you to add a foreignkey to role
+    # role
+        # Role
+        # on_delete models.SET_NULL
+        # blank=True
+        # null-True
+        # related_name employees
+
 
     def __str__(self):
         return F"{self.first_name} {self.last_name}" \
