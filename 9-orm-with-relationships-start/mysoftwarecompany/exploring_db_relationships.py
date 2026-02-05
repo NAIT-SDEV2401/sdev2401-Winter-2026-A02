@@ -22,4 +22,6 @@ all_employees = acme_company.employees.all()
 all_employees = Employee.objects.filter(
     company=acme_company
 )
+print("All Employees are")
+print(all_employees)
 
