@@ -25,6 +25,16 @@ all_employees = Employee.objects.filter(
 print("All Employees are")
 print(all_employees)
 
-# creating when you have this external relationship.
+# creating when you have this foreign key relationship.
 # we just need the instance of a company and create
 # an employee the same way as before.
+new_employee = Employee.objects.create(
+    # fields that aren't foreignkeys
+    first_name="Gary",
+    last_name="Ricks",
+    email="gary@test.com",
+    # you need to add the instance, note not a queryset.
+    company=acme_company
+)
+
+breakpoint()
