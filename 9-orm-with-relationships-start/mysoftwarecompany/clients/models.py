@@ -14,6 +14,11 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+# create a Role model
+    # field name Charfield unique, max len 50
+    # field description TextField blank and null
+    # created_at
+    # updated_at
 
 # the employee will have a foreign key to company
 # employee -> company (single)
