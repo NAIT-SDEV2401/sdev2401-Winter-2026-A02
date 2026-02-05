@@ -15,12 +15,17 @@ class Company(models.Model):
         return self.name
 
 
-'''
+# the employee will have a foreign key to company
+# employee -> company (single)
+# company -> employee (multiple)
+class Employee(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField(
+        max_length=100, unique=True)
 
-    # date fields
-    # the auto_now_add Automatically set the date when the record is created
-    date_joined = models.DateField(auto_now_add=True)
-    # the
-    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
+    updated_at = models.DateTimeField(auto_now=True)
 
-'''
+    def __str__(self):
+        return F"{self.first_name} {self.last_name}"
