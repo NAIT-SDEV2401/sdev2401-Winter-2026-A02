@@ -46,3 +46,7 @@ other_employee = Employee(
     company=acme_company
 )
 # this isn't going to commit to the database yet.
+other_employee.save()
+
+print("Employee created a different way.")
+print(other_employee)
