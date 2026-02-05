@@ -27,5 +27,16 @@ class Employee(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
     updated_at = models.DateTimeField(auto_now=True)
 
+    # Foreign key relationship.
+    # employee many to one company
+    # if the company is deleted the employees will be deleted.
+    # related_name is going to be how you get employees
+    # from a company instance.
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.CASCADE,
+        related_name='employees'
+    )
+
     def __str__(self):
         return F"{self.first_name} {self.last_name}"
