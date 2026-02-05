@@ -53,11 +53,14 @@ class Employee(models.Model):
     )
     # I want you to add a foreignkey to role
     # role
-        # Role
-        # on_delete models.SET_NULL
-        # blank=True
-        # null-True
-        # related_name employees
+    role = models.ForeignKey(
+        Role, # Role
+        on_delete=models.SET_NULL, # on_delete models.SET_NULL
+        blank=True,
+        null=True,
+        related_name='employees'
+        # the 'employees will be on the role
+    )
 
 
     def __str__(self):
