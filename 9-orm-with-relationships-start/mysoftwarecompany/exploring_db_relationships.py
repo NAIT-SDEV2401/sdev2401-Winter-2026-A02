@@ -12,4 +12,8 @@ from clients.models import Employee, Company
 COMPANY_NAME = "Acme Inc."
 company = Company.objects.get(name=COMPANY_NAME)
 
-breakpoint()
+# you can get the employees for this company in
+# a couple of ways
+all_employees = company.employees.all()
+# where "employees" the related_name to company
+# on the Employee model.
