@@ -39,4 +39,6 @@ class Employee(models.Model):
     )
 
     def __str__(self):
-        return F"{self.first_name} {self.last_name}"
+        return F"{self.first_name} {self.last_name}" \
+            F" works at {self.company.name}"
+        # I can access the companies' fields in this model itself.
