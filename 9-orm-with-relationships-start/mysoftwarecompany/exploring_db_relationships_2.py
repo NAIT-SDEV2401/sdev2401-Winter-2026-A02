@@ -23,6 +23,6 @@ for role_data in roles_data:
     # use get_or_create on the role
     # display if it's created successfully
     if created:
-        print("Created new role {role}")
+        print(F"Created new role {role}")
     else:
-        print("Selected role {role} from db")
+        print(F"Selected role {role} from db")
