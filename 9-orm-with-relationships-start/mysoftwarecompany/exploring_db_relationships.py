@@ -20,8 +20,11 @@ all_employees = acme_company.employees.all()
 
 # from the employee model
 all_employees = Employee.objects.filter(
-    company=acme_company
+    company=acme_company # this is this instance.
 )
 print("All Employees are")
 print(all_employees)
 
+# creating when you have this external relationship.
+# we just need the instance of a company and create
+# an employee the same way as before.
