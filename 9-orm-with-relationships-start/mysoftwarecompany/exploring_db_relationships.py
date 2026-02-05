@@ -28,13 +28,21 @@ print(all_employees)
 # creating when you have this foreign key relationship.
 # we just need the instance of a company and create
 # an employee the same way as before.
-new_employee = Employee.objects.create(
-    # fields that aren't foreignkeys
-    first_name="Gary",
-    last_name="Ricks",
-    email="gary@test.com",
-    # you need to add the instance, note not a queryset.
+# new_employee = Employee.objects.create(
+#     # fields that aren't foreignkeys
+#     first_name="Gary",
+#     last_name="Ricks",
+#     email="gary@test.com",
+#     # you need to add the instance, note not a queryset.
+#     company=acme_company
+# )
+
+# let's talk about a second way of creating an item
+# you can create the instance and then save
+other_employee = Employee(
+    first_name="Connor",
+    last_name="Hes staying",
+    email="connor@test.com",
     company=acme_company
 )
-
-breakpoint()
+# this isn't going to commit to the database yet.
