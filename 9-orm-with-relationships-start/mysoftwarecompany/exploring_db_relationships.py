@@ -22,8 +22,14 @@ all_employees = acme_company.employees.all()
 all_employees = Employee.objects.filter(
     company=acme_company # this is this instance.
 )
+# is equivalent to.
+all_employees = Employee.objects.filter(
+    company__name=COMPANY_NAME # this is this instance.
+)
 print("All Employees are")
 print(all_employees)
+
+breakpoint()
 
 # creating when you have this foreign key relationship.
 # we just need the instance of a company and create
@@ -39,14 +45,14 @@ print(all_employees)
 
 # let's talk about a second way of creating an item
 # you can create the instance and then save
-other_employee = Employee(
-    first_name="Connor",
-    last_name="Hes staying",
-    email="connor@test.com",
-    company=acme_company
-)
-# this isn't going to commit to the database yet.
-other_employee.save()
+# other_employee = Employee(
+#     first_name="Connor",
+#     last_name="Hes staying",
+#     email="connor@test.com",
+#     company=acme_company
+# )
+# # this isn't going to commit to the database yet.
+# other_employee.save()
 
 print("Employee created a different way.")
 print(other_employee)

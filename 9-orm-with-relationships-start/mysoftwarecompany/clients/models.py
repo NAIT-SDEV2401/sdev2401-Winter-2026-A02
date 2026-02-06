@@ -3,13 +3,16 @@ from django.db import models
 
 # our model for the client
 class Company(models.Model):
-
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
     # company description
     description = models.TextField(blank=True, null=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
     updated_at = models.DateTimeField(auto_now=True)
+
+    # note if you delete a company it will delete
+    # all employees.
+    # to access the employee you can use .employees
 
     def __str__(self):
         return self.name
@@ -25,6 +28,9 @@ class Role(models.Model):
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
     updated_at = models.DateTimeField(auto_now=True)
+
+    # when you delete a Role, the foreign key relationship
+    # on employee will just be set to null.
 
     def __str__(self):
         return self.name
@@ -49,7 +55,7 @@ class Employee(models.Model):
     company = models.ForeignKey(
         Company,
         on_delete=models.CASCADE,
-        related_name='employees'
+        related_name='employees' # field on Company model
     )
     # I want you to add a foreignkey to role
     # role
@@ -57,7 +63,7 @@ class Employee(models.Model):
         Role, # Role
         on_delete=models.SET_NULL, # on_delete models.SET_NULL
         blank=True,
-        null=True,
+        null=True, # nullable
         related_name='employees'
         # the 'employees will be on the role
     )
