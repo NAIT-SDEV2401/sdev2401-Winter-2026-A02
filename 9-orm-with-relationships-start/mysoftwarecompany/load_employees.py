@@ -83,8 +83,11 @@ def load_new_employees(list_data):
 
 # this shouldn't break if you run it twice.
 def main():
-    print("loading acme employees")
+    print("loading acme employees...")
     load_new_employees(new_employees_data_acme)
+    print("loading cat sitting international employees...")
+    load_new_employees(new_employees_data_cat_sitting_int)
+    print("loaded successfully.")
 
 if __name__ == "__main__":
     main()
