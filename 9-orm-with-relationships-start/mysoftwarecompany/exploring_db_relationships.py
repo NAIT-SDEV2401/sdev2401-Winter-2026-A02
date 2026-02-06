@@ -45,14 +45,14 @@ breakpoint()
 
 # let's talk about a second way of creating an item
 # you can create the instance and then save
-# other_employee = Employee(
-#     first_name="Connor",
-#     last_name="Hes staying",
-#     email="connor@test.com",
-#     company=acme_company
-# )
+other_employee = Employee(
+    first_name="Connor",
+    last_name="Hes staying",
+    email="connor@test.com",
+    company=acme_company
+)
 # # this isn't going to commit to the database yet.
-# other_employee.save()
+other_employee.save()
 
 print("Employee created a different way.")
 print(other_employee)
