@@ -5,6 +5,8 @@ django.setup()
 
 print("Django environment set up successfully.")
 
+from clients.models import Employee, Role, Company
+
 new_employees_data_acme = [
     {
         "first_name": "Alice",
@@ -56,8 +58,18 @@ new_employees_data_cat_sitting_int = [
 ]
 
 # I want you to create a function use the list as a param.
-# that will loop through the data.
-# create the employees.
-# add the appropriate relationsships.
+def load_new_employees(list_data):
+    # that will loop through the data.
+    # create the employees (save them to the db.)
+    # add the appropriate relationsships.
+    for item in list_data:
+        breakpoint()
+
 
 # this shouldn't break if you run it twice.
+def main():
+    print("loading acme employees")
+    load_new_employees(new_employees_data_acme)
+
+if __name__ == "__main__":
+    main()
