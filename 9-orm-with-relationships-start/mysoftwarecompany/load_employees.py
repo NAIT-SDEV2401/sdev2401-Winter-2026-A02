@@ -29,7 +29,6 @@ new_employees_data_acme = [
         "role": "Developer",
         "company": "Acme Inc.",
     },
-
 ]
 
 # for the second part.
@@ -63,8 +62,23 @@ def load_new_employees(list_data):
     # create the employees (save them to the db.)
     # add the appropriate relationsships.
     for item in list_data:
-        breakpoint()
+        # select role
+        role = Role.objects.get(name=item["role"])
+        # select company
+        company = Company.objects.get(name=item["company"])
 
+        employee, created = Employee.objects.get_or_create(
+            first_name=item["first_name"],
+            last_name=item["last_name"],
+            email=item["email"],
+            company=company,
+            role=role
+        )
+        print(F"Employee: {employee}")
+        if created:
+            print("created.")
+        else:
+            print("selected from db.")
 
 # this shouldn't break if you run it twice.
 def main():

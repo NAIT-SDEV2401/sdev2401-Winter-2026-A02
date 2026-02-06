@@ -17,9 +17,6 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-    def __repr__(self):
-        return F"Role(name={self.name})"
-
 # create a Role model
 class Role(models.Model):
     # field name Charfield unique, max len 50
