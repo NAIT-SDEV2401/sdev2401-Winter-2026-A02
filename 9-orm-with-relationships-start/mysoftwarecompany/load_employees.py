@@ -79,6 +79,7 @@ def load_new_employees(list_data):
             print("created.")
         else:
             print("selected from db.")
+        print("----------------")
 
 # this shouldn't break if you run it twice.
 def main():
