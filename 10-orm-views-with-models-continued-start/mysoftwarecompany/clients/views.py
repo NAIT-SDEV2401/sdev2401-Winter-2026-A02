@@ -13,6 +13,14 @@ def list_companies(request):
 # I want to create a detail company view.
 def company_detail(request, company_id):
     # we're goign to use the company id.
+    company = get_object_or_404(
+        Company, # first parameter is the model
+        id=company_id, # id is the primary key on the model.
+        # company_id is from the request.
+        # id always added to the models.
+    )
+
+    breakpoint()
 
     return render(
         request,
