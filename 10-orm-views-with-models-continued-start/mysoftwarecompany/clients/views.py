@@ -36,7 +36,7 @@ def employees_search_results(request, company_id):
     # use a query parameter
     query = request.GET.get('q') # part of the request url.
 
-
+    breakpoint()
     # we're going to use a field lookup to filter in the database.
 
 
