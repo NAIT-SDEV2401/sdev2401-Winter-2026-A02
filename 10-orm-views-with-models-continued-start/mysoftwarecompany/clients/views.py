@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 # Create your views here.
-from .models import Company
+from .models import Company, Employee
 
 
 def list_companies(request):
@@ -46,14 +46,16 @@ def employees_search_results(request, company_id):
         # filters https://docs.djangoproject.com/en/5.2/ref/models/querysets/#field-lookups
         # field looks ups just allow you to customize the way you're filtering items.
         # we're using Q objects here (link to docs: https://docs.djangoproject.com/en/5.2/topics/db/queries/#complex-lookups-with-q-objects)
-
+        # 1. wrap in Q(...) then use OR | , AND & , NOT ~
         employees = company.employees.filter(
-            Q(first_name__icontains=query) |
+            Q(first_name__icontains=query) | # (OR)
             Q(last_name__icontains=query)
         )
         # this doing
         # SELECT * FROM employees WHERE first_name LIKE '%query%' OR last_name LIKE '%query%'
-
+    else:
+        # return an empty queryset
+        employees = Employee.objects.none()
 
     return render(
         request,
