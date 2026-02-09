@@ -25,4 +25,5 @@ def company_detail(request, company_id):
     return render(
         request,
         'clients/company_detail.html',
+        {"company": company } # the context passed to the template
     )

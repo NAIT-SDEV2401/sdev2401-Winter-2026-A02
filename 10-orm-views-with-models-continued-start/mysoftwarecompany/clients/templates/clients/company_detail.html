@@ -18,6 +18,22 @@
             {{company.description}}
         </p>
     </section>
+    <!-- We're going to loop through the employees -->
+    <section class="mt-6">
+        <h2 class="text-2xl font-semibold">Employees</h2>
+        <!-- Django templating language allows you to access
+            the relationship across models with "." if it's a
+            one to many (like company to employees) you can use the
+            .all (with brackets to loop through them)
+        -->
+        <ul class="list-disc pl-5">
+        {% for employee in company.employees.all %}
+            <li>
+                {{ employee.first_name }} {{ employee.last_name }}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
 </div>
 
 {% endblock %}
