@@ -1,0 +1,330 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-06-06T19:45:30.745Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Cat Sitting International",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-06-06T19:46:51.240Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Acme Inc.",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-06-09T20:55:25.533Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Acme Inc.",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-06-09T21:08:32.986Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Cat Sitting International",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-06-09T21:33:31.352Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Tech Innovations",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-06-10T20:29:19.978Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Gary Smith works at Acme Inc.",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-06-10T21:42:29.838Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Bob Smith works at Acme Inc.",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "clients",
+    "model": "company"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "clients",
+    "model": "employee"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "clients",
+    "model": "role"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2uxmh92zg27z6oz1egfwv4m4o4ts3p5j",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWnaQgfGpXvP0Awzg6CmTSisjHdXEha6_e-9_zKJtnVKW9UlzWLOxpvT7zYQPzTvQO6Ub8VyyesyD3ZX7EGrvRbR5-Vw_w4mqtO3Dq1E7FW90xEFXOeUhWBgwKanIA4x9iQQuGlH30Vl8g4AFBkjdI15fwDqgTe6:1uNcvy:IF1IVNdcIs8F_NAkF6EF9hAR6JN8pJZ8lfA2GYP7hqI",
+    "expire_date": "2025-06-20T19:40:58.307Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "p3mjnucwzp9yuwz8eyxlxm2szfu45wzs",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlkbx7vYlPQ5g-Xf4gCypTipEHeHSCmgfTPzXsL5bS1u63lxcxIXocTpdws-PnLdQbr7emsytrouc5C7Ig_a5dRSfl4P9--g-F6-tbYYM6QzKEXaelI4JNZgEJCsgdEaBtIqDylki8AUbCBEHplG5Eji_QGuDDbK:1uP5Vn:g7iY9RQR4eo8ETj_hOOD-Kq_fY803gjv3Tgv9Y-rbDg",
+    "expire_date": "2025-06-24T20:23:59.742Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yb6yeal68a743ow7q2utar9b4c2weehs",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQAP-FsyF0YcvWo_d-A1leUjUlKe3J-O-GpAe9zkzmLRwfe3FHS5tborgKLS6_zHN4prWL-OD1XmWo674tXvZEnrbJucb0up3t36BwK33L0dIwggHtwdBgkyLWgXAEnzXyRD5MMVrEkBAIkVKweTKQWStQSny-xKE3Gw:1vpXnb:1vgTuswvHNrk-XGGa2UBNhwL7Cp6k2NiqD7_2u5QaUA",
+    "expire_date": "2026-02-23T20:23:59.088Z"
+  }
+},
+{
+  "model": "clients.company",
+  "pk": 1,
+  "fields": {
+    "name": "Cat Sitting International",
+    "email": "cat.sitting@test.com",
+    "description": "At Cat Sitting International, we specialize in providing top-tier, globe-spanning, fur-covered companionship for your feline overlords while you're away. Our team of highly trained humans is fluent in over 37 dialects of meow and fully certified in Advanced Laser Pointer Maneuvering.\r\n\r\nWe don’t just sit—we worship, entertain, and negotiate with your cat on your behalf. Whether it’s maintaining the precise sunbeam-to-blanket ratio, ensuring your cat’s food is arranged in an emotionally acceptable shape, or pretending to enjoy the gift of a freshly murdered sock, we’ve got it covered.",
+    "created_at": "2025-06-09T21:20:57.265Z",
+    "updated_at": "2025-06-09T21:20:57.273Z"
+  }
+},
+{
+  "model": "clients.company",
+  "pk": 2,
+  "fields": {
+    "name": "Acme Inc.",
+    "email": "acme@testing.com",
+    "description": "Acme Corporation is the world’s most questionably reliable supplier of gadgets, gizmos, rocket-powered roller skates, and portable black holes. Founded in a puff of smoke sometime in the early cartoon era, Acme has proudly served scheming coyotes, overly ambitious inventors, and chaos-loving customers since day one.\r\n\r\nWhether you're trying to catch a roadrunner, accidentally launch yourself into orbit, or simply want a product that defies physics and common sense, Acme is your one-stop disaster shop. No refunds. No warranties. No logic.",
+    "created_at": "2025-06-09T21:20:57.265Z",
+    "updated_at": "2025-06-09T21:20:57.273Z"
+  }
+},
+{
+  "model": "clients.company",
+  "pk": 3,
+  "fields": {
+    "name": "Tech Innovations",
+    "email": "tech.inno@test.com",
+    "description": "A leading company in tech innovations.",
+    "created_at": "2025-06-09T21:33:31.350Z",
+    "updated_at": "2025-06-09T21:33:31.350Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 1,
+  "fields": {
+    "name": "CEO",
+    "description": "Chief Executive Officer",
+    "created_at": "2025-06-10T21:38:39.309Z",
+    "updated_at": "2025-06-10T21:38:39.309Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 2,
+  "fields": {
+    "name": "Manager",
+    "description": "Manages a team of employees",
+    "created_at": "2025-06-10T21:38:39.320Z",
+    "updated_at": "2025-06-10T21:38:39.320Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 3,
+  "fields": {
+    "name": "Developer",
+    "description": "Writes code and develops software",
+    "created_at": "2025-06-10T21:38:39.325Z",
+    "updated_at": "2025-06-10T21:38:39.325Z"
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 1,
+  "fields": {
+    "first_name": "Gary",
+    "last_name": "Smith",
+    "email": "gary.smith@acmetesting.com",
+    "created_at": "2025-06-10T20:29:19.978Z",
+    "updated_at": "2025-06-10T21:51:30.100Z",
+    "company": 2,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 2,
+  "fields": {
+    "first_name": "Alice",
+    "last_name": "Johnson",
+    "email": "alice.johnson@acmetesting.com",
+    "created_at": "2025-06-10T21:18:10.194Z",
+    "updated_at": "2025-06-10T21:18:10.194Z",
+    "company": 2,
+    "role": null
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 3,
+  "fields": {
+    "first_name": "Bob",
+    "last_name": "Smith",
+    "email": "bob.smith@acmetesting.com",
+    "created_at": "2025-06-10T21:27:53.047Z",
+    "updated_at": "2025-06-10T21:42:29.838Z",
+    "company": 2,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 4,
+  "fields": {
+    "first_name": "Diana",
+    "last_name": "Prince",
+    "email": "diana.prince@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.266Z",
+    "updated_at": "2025-06-10T22:09:15.266Z",
+    "company": 1,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 5,
+  "fields": {
+    "first_name": "Ethan",
+    "last_name": "Hunt",
+    "email": "ethan.hunt@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.274Z",
+    "updated_at": "2025-06-10T22:09:15.274Z",
+    "company": 1,
+    "role": 2
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 6,
+  "fields": {
+    "first_name": "Fiona",
+    "last_name": "Green",
+    "email": "fiona.green@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.278Z",
+    "updated_at": "2025-06-10T22:09:15.278Z",
+    "company": 1,
+    "role": 3
+  }
+}
+]
