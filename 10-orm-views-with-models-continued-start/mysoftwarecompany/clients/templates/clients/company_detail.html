@@ -32,6 +32,12 @@
                 <!-- first_name last_name is the same as the
                  syntax for the fields on Employee -->
                 {{ employee.first_name }} {{ employee.last_name }}
+                <!-- we can access the role -->
+                {% if employee.role %}
+                <p>Role: ({{employee.role}})</p>
+                {% else %}
+                <p>Role unknown</p>
+                {% endif %}
             </li>
         {% endfor %}
         </ul>

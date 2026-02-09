@@ -10,7 +10,11 @@
             <ul class="list-disc pl-5">
             {% for company in companies %}
                 <li class="mb-2">
-                    <strong>{{ company.name }}</strong>
+                    <strong>
+                        <a href="{% url 'company_detail' company_id=company.id%}">
+                            {{ company.name }}
+                        </a>
+                    </strong>
                     <div>
                         {{company.email}}
                     </div>

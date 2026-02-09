@@ -20,9 +20,20 @@ def company_detail(request, company_id):
         # id always added to the models.
     )
 
-
     return render(
         request,
         'clients/company_detail.html',
         {"company": company } # the context passed to the template
+    )
+
+# we're going to create a search page.
+def employees_search_results(request, company_id):
+    # get the company
+    # use a query parameter
+    # we're going to use a field lookup to filter in the database.
+
+
+    return render(
+        request,
+        'clients/employee_search_results.html'
     )
