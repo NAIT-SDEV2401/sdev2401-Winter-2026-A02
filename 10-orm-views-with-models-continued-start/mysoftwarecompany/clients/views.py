@@ -29,11 +29,18 @@ def company_detail(request, company_id):
 # we're going to create a search page.
 def employees_search_results(request, company_id):
     # get the company
+    company = get_object_or_404(
+        Company,
+        id=company_id,
+    )
     # use a query parameter
+    query = request.GET.get('q') # part of the request url.
+
+
     # we're going to use a field lookup to filter in the database.
 
 
     return render(
         request,
-        'clients/employee_search_results.html'
+        'clients/employees_search_results.html'
     )
