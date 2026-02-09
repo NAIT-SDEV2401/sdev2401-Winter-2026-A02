@@ -20,7 +20,6 @@ def company_detail(request, company_id):
         # id always added to the models.
     )
 
-    breakpoint()
 
     return render(
         request,

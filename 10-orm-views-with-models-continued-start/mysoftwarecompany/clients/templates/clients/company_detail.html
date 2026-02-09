@@ -29,6 +29,8 @@
         <ul class="list-disc pl-5">
         {% for employee in company.employees.all %}
             <li>
+                <!-- first_name last_name is the same as the
+                 syntax for the fields on Employee -->
                 {{ employee.first_name }} {{ employee.last_name }}
             </li>
         {% endfor %}
