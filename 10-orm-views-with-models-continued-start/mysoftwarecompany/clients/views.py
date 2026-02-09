@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 # Create your views here.
 from .models import Company
 
@@ -34,13 +34,29 @@ def employees_search_results(request, company_id):
         id=company_id,
     )
     # use a query parameter
+    # for example we have http://localhost:8000/clients/company/10/employees/results/?q=Sop
+    # the request.GET will be {"q": "Sop"}
     query = request.GET.get('q') # part of the request url.
 
-    breakpoint()
     # we're going to use a field lookup to filter in the database.
+    employees= None
+    if query:
+        # I want to filter the companies based on this .
+        # take a look at field lookups to perform more of these
+        # filters https://docs.djangoproject.com/en/5.2/ref/models/querysets/#field-lookups
+        # field looks ups just allow you to customize the way you're filtering items.
+        # we're using Q objects here (link to docs: https://docs.djangoproject.com/en/5.2/topics/db/queries/#complex-lookups-with-q-objects)
+
+        employees = company.employees.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query)
+        )
+        # this doing
+        # SELECT * FROM employees WHERE first_name LIKE '%query%' OR last_name LIKE '%query%'
 
 
     return render(
         request,
-        'clients/employees_search_results.html'
+        'clients/employees_search_results.html',
+        {'employees': employees }
     )
