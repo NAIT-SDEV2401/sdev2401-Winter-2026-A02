@@ -20,8 +20,18 @@ def contact_us(request):
         # we're going to check if it's valid
         # this performs 1. validation and
         # 2. the sanitatization.
+        # above request.POST is now form.data
+        # the unsanitized data.
         if form.is_valid():
-            breakpoint()
+            # we can access form clean data
+            # as a dictionary
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+            # data from the user in the form.
+            # we're going handle the returning this
+            # in a minute.
+
 
     if request.method == "GET":
         # we're going to create a form
