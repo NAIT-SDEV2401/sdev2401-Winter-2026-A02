@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 # get the specical function to fetch an object or return a 404 error
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 
 # Create your views here.
 from .models import Company, Employee
@@ -31,6 +32,18 @@ def contact_us(request):
             # data from the user in the form.
             # we're going handle the returning this
             # in a minute.
+
+            # sending a email is common here.
+            send_mail(
+                subject=F"New contact us message from {name}",
+                message=message,
+                from_email=email,
+                recipient_list=[
+                    "some_admin_account@test.com"
+                    # this is the address that you folks
+                    # have control over.
+                ]
+            )
 
             # early return
             return render(
