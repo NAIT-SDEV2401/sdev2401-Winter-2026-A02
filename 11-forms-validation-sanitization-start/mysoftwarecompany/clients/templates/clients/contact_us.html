@@ -6,6 +6,13 @@
         <!-- title here-->
         Contact Us
     </h1>
+    <!-- display a message if the submission
+     is successful. -->
+    {% if success %}
+    <p>Message sent.</p>
+    {% endif %}
+
+
     <form method="post" class="mt-4">
         <!-- We need the csrf Token -->
         {% csrf_token %}
