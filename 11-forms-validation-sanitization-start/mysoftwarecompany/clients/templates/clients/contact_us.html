@@ -17,10 +17,12 @@
     <form method="post" class="mt-4">
         <!-- We need the csrf Token -->
         {% csrf_token %}
-        <!-- Fields below we can loop through each. -->
+        <!-- Fields below we can loop through each.
+        Looping through the forms allows up to change classes on the fields, labels and errors
+        -->
         {% for field in form %}
             <!-- label -->
-            <label for="{{ field.id_for_label }}"  class="block text-sm font-medium text-gray-700">
+            <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
                 {{ field.label }}
             </label>
             <!-- Input below -->
