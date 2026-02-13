@@ -15,7 +15,13 @@ def contact_us(request):
 
     form = None
     if request.method == "POST":
-        breakpoint()
+        # request.POST is a queryDict (dict)
+        form = ContactForm(request.POST)
+        # we're going to check if it's valid
+        # this performs 1. validation and
+        # 2. the sanitatization.
+        if form.is_valid():
+            breakpoint()
 
     if request.method == "GET":
         # we're going to create a form
