@@ -7,6 +7,24 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 from .models import Company, Employee
 
+# import the form
+from .forms import ContactForm
+
+# view to contact
+def contact_us(request):
+
+    form = None
+
+    if request.method == "GET":
+        # we're going to create a form
+        form = ContactForm()
+        # there's nothing to pass in,
+        # when we get the page.
+    return render(
+        request,
+        "clients/contact_us.html",
+        { "form": form }
+    )
 
 def list_companies(request):
     # fetching data from the database and passing it to the template
