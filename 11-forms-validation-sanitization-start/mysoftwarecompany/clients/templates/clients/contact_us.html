@@ -25,12 +25,11 @@
             {{ field }}
             {% if field.errors %}
                 <p class="text-sm text-red-500 mt-1">
-
+                    {{ field.errors | striptags }}
                 </p>
             {% endif %}
-
-
         {% endfor %}
+        <!-- Later on we'll add non field errors here. -->
         <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
             Submit
         </button>
