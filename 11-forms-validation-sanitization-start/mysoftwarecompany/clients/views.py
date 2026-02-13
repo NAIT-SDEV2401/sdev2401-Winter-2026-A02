@@ -32,6 +32,12 @@ def contact_us(request):
             # we're going handle the returning this
             # in a minute.
 
+            # early return
+            return render(
+                request,
+                "contact_us.html",
+                {"form": form, "success": True}
+            )
 
     if request.method == "GET":
         # we're going to create a form
