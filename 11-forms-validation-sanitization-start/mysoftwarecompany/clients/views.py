@@ -35,7 +35,7 @@ def contact_us(request):
             # early return
             return render(
                 request,
-                "contact_us.html",
+                "clients/contact_us.html",
                 {"form": form, "success": True}
             )
 

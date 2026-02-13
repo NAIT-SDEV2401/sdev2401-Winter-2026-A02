@@ -15,22 +15,8 @@
     <form method="post" class="mt-4">
         <!-- We need the csrf Token -->
         {% csrf_token %}
-        <!-- Fields below we can loop through each. -->
-        {% for field in form %}
-            <!-- label -->
-            <label for="{{ field.id_for_label }}"  class="block text-sm font-medium text-gray-700">
-                {{ field.label }}
-            </label>
-            <!-- Input below -->
-            {{ field }}
-            {% if field.errors %}
-                <p class="text-sm text-red-500 mt-1">
-
-                </p>
-            {% endif %}
-
-
-        {% endfor %}
+        <!-- Fields below -->
+        {{ form.as_p }}
         <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
             Submit
         </button>
