@@ -14,6 +14,8 @@ from .forms import ContactForm
 def contact_us(request):
 
     form = None
+    if request.method == "POST":
+        breakpoint()
 
     if request.method == "GET":
         # we're going to create a form
