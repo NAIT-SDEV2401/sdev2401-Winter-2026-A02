@@ -14,6 +14,16 @@ def create_company(request):
     if request.method == "POST":
         # request.POST is the raw data passed into the form.
         form = CompanyForm(request.POST)
+        # check if the form is valid.
+        if form.is_valid():
+            # we're going to perform a form.save
+            # this is going to save the data from the user
+            # into the database.
+            form.save()
+
+            # to access the instance you can use form.instance.
+            company = form.instance
+
     else:
         form = CompanyForm()
 
