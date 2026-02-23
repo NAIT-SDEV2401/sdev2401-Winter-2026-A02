@@ -24,6 +24,13 @@ def create_company(request):
             # to access the instance you can use form.instance.
             company = form.instance
 
+            # return a new form and the company instance.
+            return render(
+                request,
+                "clients/create_company.html",
+                { "form": form, "new_company": company }
+            )
+
     else:
         form = CompanyForm()
 
