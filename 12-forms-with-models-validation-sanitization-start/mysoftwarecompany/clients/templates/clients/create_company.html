@@ -11,6 +11,12 @@
         <!-- Render the form fields -->
         {% for field in form %}
         <div>
+            <!-- the following tags are all generated for you
+                {{ field.id_for_label }} id
+                {{ field.label }} the label
+                {{ field }} the input
+                {{ field.errors }} errors
+             -->
             <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
                 {{ field.label }}
             </label>

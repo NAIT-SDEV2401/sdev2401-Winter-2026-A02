@@ -11,8 +11,11 @@ from .forms import ContactForm, CompanyForm
 
 # create the create company view.
 def create_company(request):
-
-    form = CompanyForm()
+    if request.method == "POST":
+        # request.POST is the raw data passed into the form.
+        form = CompanyForm(request.POST)
+    else:
+        form = CompanyForm()
 
     return render(
         request,
