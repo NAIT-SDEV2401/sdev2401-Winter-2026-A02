@@ -8,7 +8,8 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['name', 'email', 'description']
-
+        # we don't add created_at and updated_at because these get updated
+        # on their own.
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
