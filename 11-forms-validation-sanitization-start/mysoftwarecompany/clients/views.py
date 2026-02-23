@@ -52,7 +52,7 @@ def contact_us(request):
                 {"form": form, "success": True}
             )
 
-    if request.method == "GET":
+    else:
         # we're going to create a form
         form = ContactForm()
         # there's nothing to pass in,
