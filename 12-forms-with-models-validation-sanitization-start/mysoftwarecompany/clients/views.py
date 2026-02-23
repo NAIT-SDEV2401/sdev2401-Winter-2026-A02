@@ -7,7 +7,20 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from .models import Company, Employee
-from .forms import ContactForm
+from .forms import ContactForm, CompanyForm
+
+# create the create company view.
+def create_company(request):
+
+    form = CompanyForm()
+
+    return render(
+        request,
+        "clients/create_company.html",
+        { "form": form }
+    )
+
+
 
 # Create the contact form here.
 def contact_us(request):
