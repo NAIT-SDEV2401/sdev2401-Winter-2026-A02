@@ -1,5 +1,15 @@
 from django import forms
 
+# create a model form based on the Company model.
+from .models import Company
+
+class CompanyForm(forms.ModelForm):
+    # meta class tells django what model and fields to use.
+    class Meta:
+        model = Company
+        fields = ['name', 'email', 'description']
+
+
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
