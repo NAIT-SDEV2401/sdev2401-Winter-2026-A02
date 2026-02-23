@@ -26,5 +26,17 @@ class ContactForm(forms.Form):
 
 
     # use the clean message
-    # check to see if the message is less than 10 character raise an error if so
     # check to see if there's more than two words if not raise an error
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+
+        # check to see if the message is less than 10 character raise an error if so
+        if len(message) < 10:
+            raise forms.ValidationError("message needs to be longer than 10 characters.")
+
+        words = message.split(' ')
+        word_count = len(words)
+        if word_count <= 2:
+            raise forms.ValidationError('message needs more than two words')
+
+        return message
