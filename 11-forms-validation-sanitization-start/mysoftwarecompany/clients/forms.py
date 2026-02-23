@@ -23,3 +23,8 @@ class ContactForm(forms.Form):
             )
         # otherwise return the name.
         return name
+
+
+    # use the clean message
+    # check to see if the message is less than 10 character raise an error if so
+    # check to see if there's more than two words if not raise an error
