@@ -18,8 +18,21 @@ def update_company(request, company_id):
     company = get_object_or_404(Company, id=company_id)
     # we're going to pass an existing instance to the form.
     if request.method == "POST":
+        form = CompanyForm(request.POST, instance=company)
 
-        pass
+        if form.is_valid():
+            form.save()
+            # after updates
+            update_company = form.instance
+            return render(
+                request,
+                "clients/update_company.html",
+                {
+                    "company": update_company,
+                    "form": form,
+                    "success": True
+                }
+            )
     else:
 
         form = CompanyForm(instance=company)
