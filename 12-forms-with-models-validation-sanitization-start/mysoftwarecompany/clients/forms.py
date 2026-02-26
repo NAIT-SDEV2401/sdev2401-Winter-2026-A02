@@ -11,6 +11,30 @@ class CompanyForm(forms.ModelForm):
         # we don't add created_at and updated_at because these get updated
         # on their own.
 
+    # let's add some cross field validation
+    # validation on multiple fields here.
+    def clean(self):
+        # list of banned wordss
+        forbidden_words = ["scam", "fake", "ponzi"]
+        # get the cleaned data from the super class which
+        # is the forms.Modelform
+        cleaned_data = super().clean() # a dictionary
+        # name and description
+        name = cleaned_data.get('name')
+        description = cleaned_data.get('description')
+
+
+        for word in forbidden_words:
+            if (word in description.lower() or
+                word in name.lower()):
+                raise forms.ValidationError(
+                    F"word '{word}' is forbidden please change"
+                )
+
+        return cleaned_data
+
+
+
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
