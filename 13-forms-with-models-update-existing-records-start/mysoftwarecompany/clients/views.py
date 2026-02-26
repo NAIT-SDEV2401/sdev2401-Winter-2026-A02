@@ -9,6 +9,23 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
+def update_company(request, company_id):
+    # we're going to update a specific company
+    company = get_object_or_404(Company, id=company_id)
+    # we're going to pass an existing instance to the form.
+    form = CompanyForm(instance=company)
+
+    return render(
+        request,
+        "clients/update_company.html",
+        {
+            "company": company,
+            "form": form
+        }
+    )
+
+
+
 def create_company(request):
     if request.method == "POST":
         form = CompanyForm(request.POST)
