@@ -13,8 +13,11 @@ def update_company(request, company_id):
     # we're going to update a specific company
     company = get_object_or_404(Company, id=company_id)
     # we're going to pass an existing instance to the form.
-    form = CompanyForm(instance=company)
 
+    form = CompanyForm(instance=company)
+    # the line above will populate the form with the model values
+    # as the default.
+    breakpoint()
     return render(
         request,
         "clients/update_company.html",
