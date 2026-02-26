@@ -14,14 +14,17 @@ def update_company(request, company_id):
     # save it to the database
     # handle success add a message
     # to the context and the html
-
     # we're going to update a specific company
     company = get_object_or_404(Company, id=company_id)
     # we're going to pass an existing instance to the form.
+    if request.method == "POST":
 
-    form = CompanyForm(instance=company)
-    # the line above will populate the form with the model values
-    # as the default.
+        pass
+    else:
+
+        form = CompanyForm(instance=company)
+        # the line above will populate the form with the model values
+        # as the default.
 
     return render(
         request,
