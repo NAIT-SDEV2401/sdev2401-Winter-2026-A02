@@ -34,7 +34,6 @@ def update_company(request, company_id):
                 }
             )
     else:
-
         form = CompanyForm(instance=company)
         # the line above will populate the form with the model values
         # as the default.
