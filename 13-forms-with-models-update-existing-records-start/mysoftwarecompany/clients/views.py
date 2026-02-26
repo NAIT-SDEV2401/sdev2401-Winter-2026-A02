@@ -27,8 +27,6 @@ def update_company(request, company_id):
         }
     )
 
-
-
 def create_company(request):
     if request.method == "POST":
         form = CompanyForm(request.POST)
@@ -55,7 +53,6 @@ def create_company(request):
             "clients/create_company.html",
             {"form": form}
         )
-
 
 # Create the contact form here.
 def contact_us(request):
