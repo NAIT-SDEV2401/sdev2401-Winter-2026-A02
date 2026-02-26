@@ -28,7 +28,8 @@ def create_company(request):
             return render(
                 request,
                 "clients/create_company.html",
-                { "form": CompanyForm(), "new_company": company }
+                { "form": CompanyForm(),
+                 "new_company": company }
             )
 
     else:
