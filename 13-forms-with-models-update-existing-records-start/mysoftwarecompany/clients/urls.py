@@ -6,7 +6,7 @@ from .views import (
 
 urlpatterns = [
     path('companies/', list_companies, name='companies_list'),
-    path('company/<int:company_id>/update', update_company, name="update_company")
+    path('company/<int:company_id>/update/', update_company, name="update_company"),
     path('company/<int:company_id>/', company_detail, name='company_detail'),
     path('company/<int:company_id>/employees/results/', employees_search_results, name='employees_search_results'),
     path('company/create/', create_company, name='create_company'),
