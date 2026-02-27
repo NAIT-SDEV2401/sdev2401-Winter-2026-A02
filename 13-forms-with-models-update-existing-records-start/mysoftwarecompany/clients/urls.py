@@ -1,10 +1,13 @@
 from django.urls import path
 from .views import (
     list_companies, company_detail, employees_search_results, contact_us,
-    create_company, update_company
+    create_company, update_company, company_add_employee
 )
 
 urlpatterns = [
+    path('company/<int:company_id>/employees/add',
+         company_add_employee,
+         name='company_add_employee'),
     path('companies/', list_companies, name='companies_list'),
     path('company/<int:company_id>/update/', update_company, name="update_company"),
     path('company/<int:company_id>/', company_detail, name='company_detail'),

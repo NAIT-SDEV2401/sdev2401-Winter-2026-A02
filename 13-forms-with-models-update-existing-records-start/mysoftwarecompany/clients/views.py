@@ -9,6 +9,9 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
+
+
+
 def update_company(request, company_id):
     # write the post method
     # save it to the database
