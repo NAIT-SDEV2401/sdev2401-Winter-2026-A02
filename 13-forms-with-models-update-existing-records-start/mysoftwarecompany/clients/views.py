@@ -7,12 +7,24 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from .models import Company, Employee
-from .forms import ContactForm, CompanyForm
+from .forms import ContactForm, CompanyForm, EmployeeForm
 
 # make the view to only render form (no post yet)
 # add this view
-# to the context I wnat you folks return
-# the company and the form.
+def company_add_employee(request, company_id):
+    # a note on the above here we need the company_id because
+    # it's specified in the url.
+    form = EmployeeForm()
+
+    # to the context I wnat you folks return
+    # the company and the form.
+    return render(
+        request,
+        "clients/add_employee.html",
+        {
+            "form": form
+        }
+    )
 
 
 def update_company(request, company_id):
