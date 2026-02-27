@@ -18,10 +18,6 @@ class CompanyForm(forms.ModelForm):
         # note the line below calls the parent class's clean method to get the cleaned data remember this is from inheritence.
         cleaned_data = super().clean()
         email = cleaned_data.get('email')
-        # we can search our database
-        if Company.objects.filter(email=email).exists():
-            raise forms.ValidationError("A company with this email already exists.")
-            # note you can also use `self.add_error('email', 'A company with this email already exists.')` to add the error to a specific field instead of the whole form.
 
         # check for banned words.
         name = cleaned_data.get('name', '')
