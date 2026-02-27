@@ -13,6 +13,7 @@ class EmployeeForm(forms.ModelForm):
             'email',
             'role'
         ]
+    # note here that we're going to add company afterwards.
 
 
 
