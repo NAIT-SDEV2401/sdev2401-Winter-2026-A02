@@ -14,8 +14,37 @@ from .forms import ContactForm, CompanyForm, EmployeeForm
 def company_add_employee(request, company_id):
     # a note on the above here we need the company_id because
     # it's specified in the url.
-    form = EmployeeForm()
     company = get_object_or_404(Company, id=company_id)
+
+    if request.method == "POST":
+        # we're we'll handle the form.
+        form = EmployeeForm(request.POST)
+
+        if form.is_valid():
+            # We're going to create a form instance
+            # without saving to the database yet.
+            new_employee = form.save(commit=False)
+            # this commit=False will not save to the db
+            # new_employee is a an instance.
+
+            # modify the field here
+            new_employee.company = company
+
+            # let's commit it to the db.
+            new_employee.save()
+
+            return render(
+                request,
+                "clients/add_employee.html",
+                {
+                    "form": Employee(),
+                    "company": company,
+                    "employee": new_employee,
+                    "success": True
+                })
+
+    else:
+        form = EmployeeForm()
     # to the context I wnat you folks return
     # the company and the form.
     return render(
