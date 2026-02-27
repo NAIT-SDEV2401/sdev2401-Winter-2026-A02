@@ -15,14 +15,15 @@ def company_add_employee(request, company_id):
     # a note on the above here we need the company_id because
     # it's specified in the url.
     form = EmployeeForm()
-
+    company = get_object_or_404(Company, id=company_id)
     # to the context I wnat you folks return
     # the company and the form.
     return render(
         request,
         "clients/add_employee.html",
         {
-            "form": form
+            "form": form,
+            "company": company
         }
     )
 

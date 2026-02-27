@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- FIX THE FORM! -->
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold underline">
+        Add an employee to company COMPANYNAMEHERE
+    </h1>
+
+    <form method="post" class="mt-4">
+        <!-- Add the CSRF token for security -->
+
+        <!-- Render the form fields -->
+
+            <div>
+            <label for="FIELDIDHERE" class="block text-sm font-medium text-gray-700">
+                LABELHERE
+            </label>
+            FIELDHERE
+
+            <!-- render field errors below. -->
+                <p class="text-sm text-red-500 mt-1"></p>
+
+            </div>
+
+        <!-- Non field errors -->
+        <div class="mb-4 p-4 bg-red-100 text-red-800 border border-red-200 rounded">
+            <ul>
+                <li></li>
+
+            </ul>
+        </div>
+
+
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            Submit
+        </button>
+    </form>
+</div>
+{% endblock %}
+
