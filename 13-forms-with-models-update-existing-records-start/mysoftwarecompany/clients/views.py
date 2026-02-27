@@ -9,7 +9,10 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
-
+# make the view to only render form (no post yet)
+# add this view
+# to the context I wnat you folks return
+# the company and the form.
 
 
 def update_company(request, company_id):
