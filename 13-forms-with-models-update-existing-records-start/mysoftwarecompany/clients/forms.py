@@ -1,9 +1,19 @@
 from django import forms
 
-from .models import Company
+from .models import Company, Employee
 
 # 3 mins to create the modelform for employee.
 # with right fields.
+class EmployeeForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'role'
+        ]
+
 
 
 class CompanyForm(forms.ModelForm):
