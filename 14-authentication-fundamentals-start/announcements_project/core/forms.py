@@ -12,6 +12,8 @@ from .models import User
 class UserRegistrationForm(UserCreationForm):
     # just like a modelform add the meta class
     class Meta:
+        # the meta class is just the syntax to create a form
+        # based on the model
         model = User
         fields = [
             # add fields from the AbstractUser
