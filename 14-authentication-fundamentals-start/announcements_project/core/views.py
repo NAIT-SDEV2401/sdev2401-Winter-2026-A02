@@ -24,5 +24,5 @@ def register(request):
     return render(
         request,
         "core/register.html",
-        {"form", form}
+        {"form": form}
     )

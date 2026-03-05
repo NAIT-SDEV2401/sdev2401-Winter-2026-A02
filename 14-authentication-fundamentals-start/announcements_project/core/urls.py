@@ -1,7 +1,12 @@
 from django.urls import path
 
+# I'm going to import the LoginView and LogoutView
+from django.contrib.auth.views import LoginView, LogoutView
+
 from .views import register
 
 urlpatterns = [
-    path('register', register, name="register")
+    # register endpoint from last class.
+    path('register/', register, name="register")
+
 ]
