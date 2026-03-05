@@ -9,6 +9,8 @@ urlpatterns = [
     path("register/", register, name="register"),
     path("login/", LoginView.as_view(
         template_name="core/login.html"
-    ), name="login")
+    ), name="login"),
+    path("logout", LogoutView.as_view(),
+         name="logout")
 
 ]
