@@ -10,6 +10,7 @@ from .models import Announcement
 
 # students and teachers can view
 # so any one logged in.
+@login_required
 def announcement_list(request):
     announcements = Announcement.objects.all().order_by('-created_at')
     return render(
