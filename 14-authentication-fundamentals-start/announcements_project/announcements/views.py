@@ -1,3 +1,8 @@
+# import the decorator for login_required
+# to essentially make sure that user that isn't authenticated
+# can't the page.
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render, redirect
 
 # Create your views here.
