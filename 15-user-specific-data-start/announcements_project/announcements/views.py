@@ -1,9 +1,15 @@
 from django.shortcuts import render, redirect
 # import login_required decorator
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import (login_required, user_passes_test,
+                                            permission_required)
 # user passes test is another decorator
 # the takes in a function and checks to see if the user
 # pass a single test.
+# permission_required is a decorator that looks at the permission for a given user
+# maybe they're in a group
+# if they have a specific permission.
+
+
 
 # let's import our is_teacher permission function
 from core.permissions import is_teacher
@@ -21,8 +27,10 @@ def announcement_list(request):
         {'announcements': announcements}
     )
 
+# used from before.
+# @user_passes_test(is_teacher, login_url='login')
 @login_required
-@user_passes_test(is_teacher, login_url='login')
+@permission_required(['announcements.add_announcment', 'announcements.change_announcment']) # add permission for this.
 def create_announcement(request):
     # let's handle the post.
     if request.method == "POST":
