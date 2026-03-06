@@ -1,6 +1,13 @@
 from django.shortcuts import render, redirect
 # import login_required decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+# user passes test is another decorator
+# the takes in a function and checks to see if the user
+# pass a single test.
+
+# let's import our is_teacher permission function
+from core.permissions import is_teacher
+
 
 from .forms import AnnouncementForm
 from .models import Announcement
@@ -14,6 +21,8 @@ def announcement_list(request):
         {'announcements': announcements}
     )
 
+@login_required
+@user_passes_test(is_teacher, login_url='login')
 def create_announcement(request):
     # let's handle the post.
     if request.method == "POST":
