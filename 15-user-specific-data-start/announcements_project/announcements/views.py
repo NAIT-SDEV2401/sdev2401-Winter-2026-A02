@@ -30,9 +30,12 @@ def announcement_list(request):
 # used from before.
 # @user_passes_test(is_teacher, login_url='login')
 @login_required
-@permission_required(['announcements.add_announcment', 'announcements.change_announcment']) # add permission for this.
+@permission_required('announcements.add_announcment') # add permission for this.
 def create_announcement(request):
     # let's handle the post.
+    # check to see if a user has permission with
+    # has_perm
+    # request.user.has_perm('announcements.add_announcement')
     if request.method == "POST":
         # pass the data into the form
         form = AnnouncementForm(request.POST)
