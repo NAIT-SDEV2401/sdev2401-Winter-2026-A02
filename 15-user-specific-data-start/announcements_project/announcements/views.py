@@ -24,12 +24,11 @@ def create_announcement(request):
             # we are going to add the created by afterwards
             announcement = form.save(commit=False)
             # create instance but not save it to the db.
-            announcement.create_by = request.user
+            announcement.created_by = request.user
             # the request user is where we can find the
             # user on every request.
             form.save()
             return redirect('announcement_list')
-
     else:
         form = AnnouncementForm()
     return render(
