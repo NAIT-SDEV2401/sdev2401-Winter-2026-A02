@@ -8,3 +8,6 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'profile_picture']
+
+        # profile picture creates a forms.ImageField here
+        # docs: https://docs.djangoproject.com/en/5.2/ref/forms/fields/#imagefield
