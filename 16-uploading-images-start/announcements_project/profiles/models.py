@@ -11,7 +11,13 @@ class Profile(models.Model):
         related_name="profile"
     )
     bio = models.TextField(blank=True, null=True)
-
+    # make a profile picture.
+    profile_picture = models.ImageField(
+        upload_to="profile_pictures/", # this line will upload to media/profile_pictures/
+        blank=True,
+        null=True
+    )
+    # it's a good idea overall to post to different folders.
 
     def __str__(self):
         # looks at the username of the user model.
