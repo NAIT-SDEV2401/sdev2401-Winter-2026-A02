@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # custom apps
     "core",
     "announcements",
+    # add the profile app
+    "profiles",
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,10 @@ AUTH_USER_MODEL = 'core.User'
 LOGIN_REDIRECT_URL = '/announcements/'  # after login original LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # after logout
 LOGIN_URL = '/accounts/login/' #
+
+# MEDIA settings for user uploads
+# this is for the development environment only and will change
+# in production.
+MEDIA_URL = '/media/' # this is the url where the media is served
+MEDIA_ROOT = BASE_DIR / 'media' # this is the path where files will be stored.
+# normally this is ignored in the .gitignore file.
