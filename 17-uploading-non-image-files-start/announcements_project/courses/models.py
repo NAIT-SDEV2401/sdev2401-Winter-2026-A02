@@ -20,3 +20,21 @@ class Assignment(models.Model):
 
 
 # create a submission
+class Submission(models.Model):
+    # - assignment foreign key to assignment cascade.
+    assignment = models.ForeignKey(
+        Assignment,
+        on_delete=models.CASCADE,
+        related_name="submission",
+    )
+    # - student_name that's just a charfield
+    student_name = models.CharField(max_length=100)
+    # - file filefield that uploads to "submissions/"
+    file = models.FileField(
+        upload_to="submissions/",
+    )
+    # - submitted_at datetime fileld when the item was created.
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Submission {self.student_name} for {self.assignment}"
