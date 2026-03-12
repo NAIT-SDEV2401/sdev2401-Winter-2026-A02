@@ -8,13 +8,13 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('core.urls')),  # registration view added!
-    path('announcements/', include('announcements.urls')),  # announcements app urls
+    path("accounts/", include("core.urls")),  # registration view added!
+    path("announcements/", include("announcements.urls")),  # announcements app urls
+    path("profiles/", include("profiles.urls")),
 ]
 
 # we need to serve these files as urls
-if settings.DEBUG: # our development settings
+if settings.DEBUG:  # our development settings
     urlpatterns += static(
-        settings.MEDIA_URL, # the path to serve
-        document_root=settings.MEDIA_ROOT
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT  # the path to serve
     )
