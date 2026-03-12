@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # custom apps
     "core",
     "announcements",
@@ -60,7 +59,7 @@ ROOT_URLCONF = "announcements_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -120,11 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/" # the url that will serve our static files when
+STATIC_URL = "static/"  # the url that will serve our static files when
 # running our server.
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 # Default primary key field type
@@ -134,16 +131,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # you can add this at the bottom of the file
 # as it's not created yet.
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = "core.User"
 
 
-LOGIN_REDIRECT_URL = '/announcements/'  # after login original LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'  # after logout
-LOGIN_URL = '/accounts/login/' #
+LOGIN_REDIRECT_URL = "/announcements/"  # after login original LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = "/accounts/login/"  # after logout
+LOGIN_URL = "/accounts/login/"  #
 
 # MEDIA settings for user uploads
 # this is for the development environment only and will change
 # in production.
-MEDIA_URL = '/media/' # this is the url where the media is served
-MEDIA_ROOT = BASE_DIR / 'media' # this is the path where files will be stored.
+MEDIA_URL = "/media/"  # this is the url where the media is served
+MEDIA_ROOT = BASE_DIR / "media"  # this is the path where files will be stored.
 # normally this is ignored in the .gitignore file.
