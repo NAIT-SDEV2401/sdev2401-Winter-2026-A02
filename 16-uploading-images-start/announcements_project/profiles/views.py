@@ -14,8 +14,8 @@ from .forms import ProfileForm
 def update_profile(request):
     # we're going to get or create a profile from the db.
     profile, created = Profile.objects.get_or_create(user=request.user)
-    breakpoint()
     if request.method == "POST":
+        breakpoint()
         form = ProfileForm(
             request.POST,
             request.FILES,  # the images that are passed back.
