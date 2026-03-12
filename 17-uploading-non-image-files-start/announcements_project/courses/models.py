@@ -9,7 +9,14 @@ class Assignment(models.Model):
     due_date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    owner
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="assingments",
+    )
+
+    def __str__(self):
+        return self.title
 
 
 # create a submission
