@@ -18,6 +18,20 @@ class Assignment(models.Model):
     def __str__(self):
         return self.title
 
+    # the cls on a class method is the class itself
+    # we won't be using it.
+    @classmethod
+    def create_assignments_from_csv(cls, csv_file, owner):
+        # decode the csv
+        decoded_file = csv_file.read().decode("utf-8").splitlines()
+        breakpoint()
+        # dictreader
+
+        # loop through the csv
+        # create assignment
+
+        # return assignments created.
+
 
 # create a submission
 class Submission(models.Model):

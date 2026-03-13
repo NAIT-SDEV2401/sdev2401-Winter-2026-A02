@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import BulkAssignmentUploadForm
+from .models import Assignment
 
 # create our bulk assingment upload view
 
@@ -18,7 +19,12 @@ def bulk_assignment_upload(request):
         )
         if form.is_valid():
             csv_file = form.cleaned_data.get("csv_file")
-            breakpoint()
+            # let's call our class method
+            assignments = Assignment.create_assignments_from_csv(
+                csv_file=csv_file,
+                owner=request.user,
+            )
+
             # next class we're going to build the parser
             # that's going to create a whole bunch of assignments
             # render that in the template.
