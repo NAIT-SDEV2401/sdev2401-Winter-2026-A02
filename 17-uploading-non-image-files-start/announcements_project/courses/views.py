@@ -12,6 +12,7 @@ from .models import Assignment
 # the get file from the cleaned data
 @login_required
 def bulk_assignment_upload(request):
+    success = False
     if request.method == "POST":
         form = BulkAssignmentUploadForm(
             request.POST,
@@ -24,7 +25,7 @@ def bulk_assignment_upload(request):
                 csv_file=csv_file,
                 owner=request.user,
             )
-            breakpoint()
+            success = True
             # next class we're going to build the parser
             # that's going to create a whole bunch of assignments
             # render that in the template.
@@ -35,5 +36,9 @@ def bulk_assignment_upload(request):
     return render(
         request,
         "courses/bulk_assignment_upload.html",
-        {"form": form},
+        {
+            "form": form,
+            "assignments": assignments,
+            "success": success,
+        },
     )
