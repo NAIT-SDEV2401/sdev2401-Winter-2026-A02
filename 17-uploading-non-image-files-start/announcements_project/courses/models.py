@@ -1,3 +1,5 @@
+import csv
+
 from django.db import models
 from django.conf import settings
 
@@ -24,6 +26,9 @@ class Assignment(models.Model):
     def create_assignments_from_csv(cls, csv_file, owner):
         # decode the csv
         decoded_file = csv_file.read().decode("utf-8").splitlines()
+        reader = csv.DictReader(decoded_file)
+        assignment = []
+
         breakpoint()
         # dictreader
 
