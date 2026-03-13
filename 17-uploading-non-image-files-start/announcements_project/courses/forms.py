@@ -4,7 +4,7 @@ from django import forms
 # this is going to take a file that's a csv
 # ensure that it's a csv in our validation
 # in our model we're going to import all of the items.
-class BulkAssignmentUploadForm(forms.Model):
+class BulkAssignmentUploadForm(forms.Forms):
     csv_file = forms.FileField(
         label="Select a CSV",
     )
