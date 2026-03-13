@@ -24,7 +24,7 @@ def bulk_assignment_upload(request):
                 csv_file=csv_file,
                 owner=request.user,
             )
-
+            breakpoint()
             # next class we're going to build the parser
             # that's going to create a whole bunch of assignments
             # render that in the template.

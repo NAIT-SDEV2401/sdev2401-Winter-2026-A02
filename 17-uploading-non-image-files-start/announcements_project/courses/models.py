@@ -36,7 +36,7 @@ class Assignment(models.Model):
             # a row will have data like this:
             # {'title': 'Assignment 1', 'description': 'Introduction to Python', 'date': '2026-02-10', 'time': '09:00'}
             # create assignment
-            new_assignment, created = Assignment.get_or_create(
+            new_assignment, created = Assignment.objects.get_or_create(
                 title=row.get("title"),
                 description=row.get("description"),
                 due_date=timezone.now(),
