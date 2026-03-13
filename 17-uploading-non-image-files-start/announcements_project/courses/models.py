@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+
 # create an assignment
 class Assignment(models.Model):
     title = models.CharField(max_length=200)
@@ -28,15 +29,25 @@ class Assignment(models.Model):
         decoded_file = csv_file.read().decode("utf-8").splitlines()
         # dictreader
         reader = csv.DictReader(decoded_file)
-        assignment = []
+        assignments = []
 
         # loop through the csv
         for row in reader:
-
-
-        # create assignment
+            # a row will have data like this:
+            # {'title': 'Assignment 1', 'description': 'Introduction to Python', 'date': '2026-02-10', 'time': '09:00'}
+            # create assignment
+            new_assignment, created = Assignment.get_or_create(
+                title=row.get("title"),
+                description=row.get("description"),
+                due_date=timezone.now(),
+                owner=owner,
+            )
+            # keep track of assignments
+            if created:
+                assignments.append(new_assignment)
 
         # return assignments created.
+        return assignments
 
 
 # create a submission
