@@ -13,6 +13,7 @@ from .models import Assignment
 @login_required
 def bulk_assignment_upload(request):
     success = False
+    assignments = []
     if request.method == "POST":
         form = BulkAssignmentUploadForm(
             request.POST,

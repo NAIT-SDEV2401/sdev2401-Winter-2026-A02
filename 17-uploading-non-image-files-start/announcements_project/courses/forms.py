@@ -11,6 +11,7 @@ class BulkAssignmentUploadForm(forms.Form):
 
     # Let's add some validation on this file.
     def clean_csv_file(self):
+        breakpoint()
         file = self.cleaned_data.get("csv_file")
         # check a few properties of the file.
         # like the file type extension.
