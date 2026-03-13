@@ -2,7 +2,7 @@ import csv
 
 from django.db import models
 from django.conf import settings
-
+from django.utils import timezone
 
 # create an assignment
 class Assignment(models.Model):
@@ -26,13 +26,14 @@ class Assignment(models.Model):
     def create_assignments_from_csv(cls, csv_file, owner):
         # decode the csv
         decoded_file = csv_file.read().decode("utf-8").splitlines()
+        # dictreader
         reader = csv.DictReader(decoded_file)
         assignment = []
 
-        breakpoint()
-        # dictreader
-
         # loop through the csv
+        for row in reader:
+
+
         # create assignment
 
         # return assignments created.
