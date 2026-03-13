@@ -18,7 +18,7 @@ def bulk_assignment_upload(request):
         )
         if form.is_valid():
             csv_file = form.cleaned_data.get("csv_file")
-
+            breakpoint()
             # next class we're going to build the parser
             # that's going to create a whole bunch of assignments
             # render that in the template.
