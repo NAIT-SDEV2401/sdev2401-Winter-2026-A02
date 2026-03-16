@@ -29,8 +29,12 @@ def assignment_submission(request, assignment_id):
         # create a form with the right fields
         form = SubmissionForm(request.POST, request.FILES)
         # handle the form and it's files
-        if form.is_valid()
-        # save the data
+        if form.is_valid():
+            instance = form.submit(commit=False)
+            # we need to add the assignment
+            instance.assignment = assignment
+            # save the data
+            instance.save()
         # give link to the submission on success and a short message.
     else:
         form = SubmissionForm()
