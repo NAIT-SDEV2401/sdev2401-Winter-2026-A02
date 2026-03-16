@@ -32,7 +32,7 @@ def assignment_submission(request, assignment_id):
         form = SubmissionForm(request.POST, request.FILES)
         # handle the form and it's files
         if form.is_valid():
-            instance = form.submit(commit=False)
+            instance = form.save(commit=False)
             # we need to add the assignment
             instance.assignment = assignment
             # save the data
