@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .forms import BulkAssignmentUploadForm
+from .forms import BulkAssignmentUploadForm, SubmissionForm
 from .models import Assignment
 
 

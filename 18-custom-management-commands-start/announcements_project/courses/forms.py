@@ -1,18 +1,32 @@
 from django import forms
 
+from .models import Submission
+
+
+# let's create our submission form
+class SubmissionForm(forms.ModelForm):
+    class Meta:
+        model = Submission
+        fields = [
+            "student_name",
+            "file",
+        ]
+        # submitted_at is automatically generated
+        # assignment will be given in the view.
+
 
 class BulkAssignmentUploadForm(forms.Form):
     csv_file = forms.FileField(label="Select a CSV file")
 
     # Let's add some validation to ensure the uploaded file is a CSV
     def clean_csv_file(self):
-        file = self.cleaned_data.get('csv_file')
+        file = self.cleaned_data.get("csv_file")
         # Validate file type extension
-        if not file.name.endswith('.csv'):
+        if not file.name.endswith(".csv"):
             raise forms.ValidationError("Please upload a valid CSV file.")
 
         # Check the content type
-        if file.content_type != 'text/csv':
+        if file.content_type != "text/csv":
             raise forms.ValidationError("File type is not CSV.")
 
         return file
