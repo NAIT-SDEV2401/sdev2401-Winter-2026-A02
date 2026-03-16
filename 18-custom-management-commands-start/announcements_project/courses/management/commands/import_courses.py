@@ -23,6 +23,21 @@ class Command(BaseCommand):
             help="csv file path to import.",
         )
 
+    # these might take a flexible number of arguments
+    # args: is a list of positional arguments passed in.
+    # kwargs: is a dictionary of named arguments passed in.
+
     def handle(self, *args, **kwargs):
-        print("hello import los csv!")
-        breakpoint()
+        # get the csv_file from the kwargs
+        csv_file = kwargs.get("csv_file")
+        # we're going to check if the file was passed in
+        # show an error if not.
+        if not csv_file:
+            self.stdout.write(
+                self.style.ERROR(
+                    "Please provide a csv",
+                )
+            )
+
+        # we are going to parse that file
+        # create course instances.
