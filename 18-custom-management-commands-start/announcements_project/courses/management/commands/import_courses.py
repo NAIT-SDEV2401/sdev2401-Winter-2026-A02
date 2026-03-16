@@ -41,3 +41,21 @@ class Command(BaseCommand):
 
         # we are going to parse that file
         # create course instances.
+        with open(csv_file, newline="") as file:
+            reader = csv.DictReader(file)
+            # all rows will take this format
+            # {'title': '...', 'description': '...'}
+            count = 0
+            for row in reader:
+                course, created = Course.objects.get_or_create(
+                    title=row.get("title"),
+                    description=row.get("description"),
+                )
+                if created:
+                    count += 1
+
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Successfully import {count} courses.",
+                )
+            )
