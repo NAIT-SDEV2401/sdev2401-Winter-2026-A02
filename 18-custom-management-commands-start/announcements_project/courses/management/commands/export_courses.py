@@ -22,6 +22,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # get the output file
         output_file = kwargs.get("output_file")
+
         if not output_file:
             self.stdout.write(
                 self.style.ERROR("Please provide output file."),
@@ -44,6 +45,6 @@ class Command(BaseCommand):
 
             self.stdout.write(
                 self.style.SUCCESS(
-                    f"Successfully exported {courses.count()} to {output_file}"
+                    f"Successfully exported {courses.count()} courses to {output_file}"
                 )
             )
