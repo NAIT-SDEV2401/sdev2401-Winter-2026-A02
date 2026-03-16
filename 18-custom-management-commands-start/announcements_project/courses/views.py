@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .forms import BulkAssignmentUploadForm, SubmissionForm
@@ -20,16 +20,27 @@ def assignment_list(request):
 @login_required
 def assignment_submission(request, assignment_id):
     # fix this view.
-    # create a form with the right fields
+    # get the assignment first
+    assignment = get_object_or_404(
+        Assignment,
+        id=assignment_id,
+    )
+    if request.method == "POST":
+        # create a form with the right fields
+        form = SubmissionForm(request.POST, request.FILES)
+        # handle the form and it's files
+        if form.is_valid()
+        # save the data
+        # give link to the submission on success and a short message.
+    else:
+        form = SubmissionForm()
     # render that form in a template (look at bulk_assignment_upload.html for help)
-    # handle the form and it's files
-    # save the data
-    # give link to the submission on success and a short message.
     return render(
         request,
         "courses/assignment_submission.html",
         {
             "assignment_id": assignment_id,
+            "form": form,
         },
     )
 
