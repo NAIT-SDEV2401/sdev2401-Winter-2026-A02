@@ -25,6 +25,8 @@ def assignment_submission(request, assignment_id):
         Assignment,
         id=assignment_id,
     )
+    instance = None
+    success = False
     if request.method == "POST":
         # create a form with the right fields
         form = SubmissionForm(request.POST, request.FILES)
@@ -35,6 +37,7 @@ def assignment_submission(request, assignment_id):
             instance.assignment = assignment
             # save the data
             instance.save()
+            success = True
         # give link to the submission on success and a short message.
     else:
         form = SubmissionForm()
@@ -45,6 +48,8 @@ def assignment_submission(request, assignment_id):
         {
             "assignment_id": assignment_id,
             "form": form,
+            "submission": instance,
+            "success": success,
         },
     )
 
