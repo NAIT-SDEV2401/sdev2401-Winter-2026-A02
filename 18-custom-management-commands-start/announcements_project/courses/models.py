@@ -65,6 +65,11 @@ class Submission(models.Model):
 
     file = models.FileField(upload_to="submissions/")
     submitted_at = models.DateTimeField(auto_now_add=True)
+    # a new field to track if the instructor
+    # was notified
+    instructor_notified = models.BooleanField(default=False)
+    # so this will only be used by the management command
+    # to update if this is was sent to the instructor.
 
     def __str__(self):
         return f"Submission by {self.student_name} for {self.assignment}"
