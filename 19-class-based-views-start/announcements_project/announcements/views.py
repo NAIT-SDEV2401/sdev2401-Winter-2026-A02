@@ -1,32 +1,58 @@
+from django.views import View
 from django.shortcuts import render, redirect
+
 # import login_required decorator
-from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
+from django.contrib.auth.decorators import (
+    login_required,
+    user_passes_test,
+    permission_required,
+)
 
 # Create your views here.
 from .models import Announcement
 from .forms import AnnouncementForm
 
+
 # our test function here.
 def is_teacher(user):
     # the user object is passed in here by the decorator
-    return user.role == 'teacher'
+    return user.role == "teacher"
+
+
+# rewrite this view in a class based manner
+# does the same thing
+# update the urls.
+class AnnouncementListView(View):
+    template_name = "announcements/announcement_list.html"
+
+    def get(self, request):
+        announcements = Announcement.objects.all().order_by("-created_at")
+        return render(
+            request,
+            self.template_name,
+            {
+                "announcements": announcements,
+            },
+        )
+
 
 @login_required
 def announcement_list(request):
-    announcements = Announcement.objects.all().order_by('-created_at')
+    announcements = Announcement.objects.all().order_by("-created_at")
     return render(
         request,
-        'announcements/announcement_list.html',
-        {'announcements': announcements}
+        "announcements/announcement_list.html",
+        {"announcements": announcements},
     )
+
 
 # this will restrict access to only users that pass the is_teacher test
 # it will redirect to the login page if the user does not have permission.
 @login_required
-@user_passes_test(is_teacher, login_url='login')
+@user_passes_test(is_teacher, login_url="login")
 # @permission_required('announcements.add_announcement', raise_exception=True) # the optional section
 def create_announcement(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = AnnouncementForm(request.POST)
         if form.is_valid():
             announcement = form.save(commit=False)
@@ -35,7 +61,7 @@ def create_announcement(request):
             announcement.created_by = request.user
             announcement.save()
             # save the announcement to the database.
-            return redirect('announcement_list')
+            return redirect("announcement_list")
     else:
         form = AnnouncementForm()
-    return render(request, 'announcements/create_announcement.html', {'form': form})
+    return render(request, "announcements/create_announcement.html", {"form": form})
