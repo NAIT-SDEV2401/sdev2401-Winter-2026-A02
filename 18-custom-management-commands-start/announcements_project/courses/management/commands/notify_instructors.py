@@ -40,3 +40,9 @@ class Command(BaseCommand):
             # set the instrcutor_notified to true.
             # give a message, telling the user how many they've
             # sent.
+            submission.instructor_notified = True
+            submission.save()
+        if kwargs.get("verbosity") > 1:
+            self.stdout.write(
+                self.style.SUCCESS(f"successfully notified instructors about {count}")
+            )
