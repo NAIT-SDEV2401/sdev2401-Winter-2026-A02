@@ -53,6 +53,8 @@ class Command(BaseCommand):
                 )
                 if created:
                     count += 1
+                # if the course already exists
+                # we don't count it.
 
             self.stdout.write(
                 self.style.SUCCESS(

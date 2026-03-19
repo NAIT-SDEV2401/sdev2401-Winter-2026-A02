@@ -21,10 +21,7 @@ def assignment_list(request):
 def assignment_submission(request, assignment_id):
     # fix this view.
     # get the assignment first
-    assignment = get_object_or_404(
-        Assignment,
-        id=assignment_id,
-    )
+
     instance = None
     success = False
     if request.method == "POST":
@@ -34,7 +31,7 @@ def assignment_submission(request, assignment_id):
         if form.is_valid():
             instance = form.save(commit=False)
             # we need to add the assignment
-            instance.assignment = assignment
+
             # save the data
             instance.save()
             success = True
