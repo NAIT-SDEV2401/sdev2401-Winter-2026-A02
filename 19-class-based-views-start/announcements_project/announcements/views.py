@@ -69,7 +69,7 @@ class CreateAnnouncementView(View):
         return render(
             request,
             self.template_name,
-            {"form", form},
+            {"form": form},
         )
 
     def get(self, request, *args, **kwargs):
