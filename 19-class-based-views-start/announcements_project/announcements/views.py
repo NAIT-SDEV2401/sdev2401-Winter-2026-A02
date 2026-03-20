@@ -51,6 +51,11 @@ def announcement_list(request):
 
 
 # rewrite create announcement in a class based view.
+@method_decorator(login_required, name="dispatch")
+@method_decorator(
+    user_passes_test(is_teacher, login_url="login"),
+    name="dispatch",
+)
 class CreateAnnouncementView(View):
     template_name = "announcements/create_announcement.html"
     form_class = AnnouncementForm
@@ -77,7 +82,7 @@ class CreateAnnouncementView(View):
         return render(
             request,
             self.template_name,
-            {"form", form},
+            {"form": form},
         )
 
 

@@ -15,6 +15,7 @@ urlpatterns = [
     ),
     # the function based way below
     # path('', announcement_list, name='announcement_list'),
+    # the CBV for create.
     path(
         "create/",
         CreateAnnouncementView.as_view(),
