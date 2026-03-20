@@ -56,10 +56,29 @@ class CreateAnnouncementView(View):
     form_class = AnnouncementForm
 
     def post(self, request, *args, **kwargs):
-        pass
+        # I don't need to check that it's a post,
+        # it's just a post.
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            announcement = form.save(commit=False)
+
+            announcement.created_by = request.user
+            announcement.save()
+            return redirect("announcement_list")
+        # still want to return the form is there's errors in it
+        return render(
+            request,
+            self.template_name,
+            {"form", form},
+        )
 
     def get(self, request, *args, **kwargs):
-        pass
+        form = self.form_class()
+        return render(
+            request,
+            self.template_name,
+            {"form", form},
+        )
 
 
 # this will restrict access to only users that pass the is_teacher test
