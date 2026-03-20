@@ -1,6 +1,8 @@
 from django.views import View
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 from .forms import BulkAssignmentUploadForm
 from .models import Assignment
@@ -9,6 +11,7 @@ from .models import Assignment
 # rewrite the urls
 
 
+@method_decorator(login_required, name="dispatch")
 class AssignmentListView(View):
     template_name = "courses/assignment_list.html"
 
@@ -33,6 +36,21 @@ def assignment_list(request):
             "assignments": assignments,
         },
     )
+
+
+@method_decorator(login_required, name="dispatch")
+class AssignmentSubmissionView(View):
+    # add the form view in the past.
+    template_name = "courses/assignment_submission.html"
+
+    def get(self, request, assignment_id):
+        return render(
+            request,
+            self.template_name,
+            {
+                "assignment_id": assignment_id,
+            },
+        )
 
 
 @login_required
