@@ -1,6 +1,9 @@
 from django.views import View
 from django.shortcuts import render, redirect
 
+# import the method decorator for the classes here.
+from django.utils.decorators import method_decorator
+
 # import login_required decorator
 from django.contrib.auth.decorators import (
     login_required,
@@ -19,9 +22,10 @@ def is_teacher(user):
     return user.role == "teacher"
 
 
-# rewrite this view in a class based manner
-# does the same thing
-# update the urls.
+# add the function decorator for the class.
+# on the View class dispatch handles all requests
+# here we are specifying dispatch as the method to decorate.
+@method_decorator(login_required, name="dispatch")
 class AnnouncementListView(View):
     template_name = "announcements/announcement_list.html"
 
