@@ -50,6 +50,18 @@ def announcement_list(request):
     )
 
 
+# rewrite create announcement in a class based view.
+class CreateAnnouncementView(View):
+    template_name = "announcements/create_announcement.html"
+    form_class = AnnouncementForm
+
+    def post(self, request, *args, **kwargs):
+        pass
+
+    def get(self, request, *args, **kwargs):
+        pass
+
+
 # this will restrict access to only users that pass the is_teacher test
 # it will redirect to the login page if the user does not have permission.
 @login_required
