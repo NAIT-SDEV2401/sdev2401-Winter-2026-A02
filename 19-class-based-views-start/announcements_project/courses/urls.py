@@ -26,7 +26,7 @@ urlpatterns = [
     # path("assignments/", assignment_list, name="assignment_list"),
     path(
         "assignments/<int:assignment_id>/submit/",
-        AssignmentSubmissionView,
+        AssignmentSubmissionView.as_view(),
         name="assignment_submission",
     ),
     # path(

@@ -73,6 +73,8 @@ class BulkAssignmentUploadView(View):
     def get(self, request):
         form = self.form_class()
         return render(
+            request,
+            self.template_name,
             {
                 "form": form,
                 "success": False,
@@ -92,6 +94,8 @@ class BulkAssignmentUploadView(View):
             success = True
 
         return render(
+            request,
+            self.template_name,
             {
                 "form": form,
                 "success": success,
