@@ -65,6 +65,7 @@ def assignment_submission(request, assignment_id):
     )
 
 
+@method_decorator(login_required, name="dispatch")
 class BulkAssignmentUploadView(View):
     form_class = BulkAssignmentUploadForm
     template_name = "courses/bulk_assignment_upload.html"
@@ -89,6 +90,7 @@ class BulkAssignmentUploadView(View):
                 csv_file, owner=request.user
             )
             success = True
+
         return render(
             {
                 "form": form,
