@@ -16,7 +16,7 @@ from .models import Announcement
 from .forms import AnnouncementForm
 
 # docs: https://docs.djangoproject.com/en/5.2/ref/class-based-views/generic-display/#listview
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
 
 # let's import our custom mixin
 # that will check for a teacher
@@ -52,8 +52,21 @@ class AnnouncementListView(LoginRequiredMixin, ListView):
 #         return render(request, self.template_name, {"announcements": announcements})
 
 
-# we're going to remove the method decorator in favour of our IsTeacherRoleMixin
-# this is going to perform the checks for the teacher role and the login required
+# let's use a formview to create an object here
+class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, FormView):
+    template_name = "announcements/create_announcement.html"
+    form_class = AnnouncementForm
+    # most forms we redirect after success
+    # define the url to redirect to on success.
+    success_url = "/announcements/"
+
+    # a function on the formview to handle when the form is valid
+    def form_valid(self, form):
+        announcement = form.save(commit=False)
+        # the request is going to be on self.
+        announcement.created_by = self.request.user
+        announcement.save()
+        return redirect("announcement_list")
 
 
 # class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, View):
