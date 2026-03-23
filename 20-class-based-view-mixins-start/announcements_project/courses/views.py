@@ -4,13 +4,18 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+# let's import the mixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import BulkAssignmentUploadForm
 from .models import Assignment
 
+# let's import our custom mixin
+from core.mixins import IsTeacherRoleMixin
+
 
 # add the login required mixin
-@method_decorator(login_required, name="dispatch")
-class AssignmentListView(View):
+class AssignmentListView(LoginRequiredMixin, View):
     template_name = "courses/assignment_list.html"
 
     def get(self, request, *args, **kwargs):
@@ -25,8 +30,9 @@ class AssignmentListView(View):
 
 
 # add the login required mixin
-@method_decorator(login_required, name="dispatch")
-class AssignmentSubmissionView(View):
+
+
+class AssignmentSubmissionView(LoginRequiredMixin, View):
     template_name = "courses/assignment_submission.html"
 
     def get(self, request, assignment_id, *args, **kwargs):
@@ -39,9 +45,10 @@ class AssignmentSubmissionView(View):
         )
 
 
+# Only teachers should be uploading assignments
 # add the login required
 # and is teacher role mixin
-class BulkAssignmentUploadView(View):
+class BulkAssignmentUploadView(IsTeacherRoleMixin, LoginRequiredMixin, View):
     template_name = "courses/bulk_assignment_upload.html"
     form_class = BulkAssignmentUploadForm
 
