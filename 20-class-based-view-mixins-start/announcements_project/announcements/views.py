@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import (
 )
 
 # Let's import the mixin here
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from .models import Announcement
 from .forms import AnnouncementForm
@@ -41,6 +41,8 @@ class AnnouncementListView(LoginRequiredMixin, ListView):
     # the idea here is that you don't need to write the list view
 
 
+# the class below does the same as the class above.
+
 # instead of using the login_required decorator
 # we're going to use the mixin instead of the method decorator.
 # docs: https://docs.djangoproject.com/en/5.2/topics/auth/default/#the-loginrequiredmixin-mixin
@@ -53,12 +55,25 @@ class AnnouncementListView(LoginRequiredMixin, ListView):
 
 
 # let's use a formview to create an object here
-class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, FormView):
+# let's add the permissionrequired. instead of is teacher role mixin
+# docs: https://docs.djangoproject.com/en/5.2/topics/auth/default/#the-permissionrequiredmixin-mixin
+
+
+class CreateAnnouncementView(
+    PermissionRequiredMixin,
+    LoginRequiredMixin,
+    FormView,
+):
     template_name = "announcements/create_announcement.html"
     form_class = AnnouncementForm
     # most forms we redirect after success
     # define the url to redirect to on success.
     success_url = "/announcements/"
+    # permission required uses the same permissiosn
+    # APP_NAME.action_MODELNAME
+    # where the action is _add, _view, _change, _delete
+    # all super users bypass the permission_required
+    permission_required = "announcements.add_announcement"
 
     # a function on the formview to handle when the form is valid
     def form_valid(self, form):
@@ -68,6 +83,8 @@ class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, FormView):
         announcement.save()
         return redirect("announcement_list")
 
+
+# the class below does the same as the class above.
 
 # class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, View):
 #     template_name = "announcements/create_announcement.html"
