@@ -21,7 +21,7 @@ class HomePageView(CurrentTimeMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # let's add a title, and description to the template
-        breakpoint()
+
         context["title"] = "Super Cool LMS"
         context["description"] = "Our awesome LMS system that we created."
         # note context passed to template here.

@@ -15,6 +15,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Announcement
 from .forms import AnnouncementForm
 
+# docs: https://docs.djangoproject.com/en/5.2/ref/class-based-views/generic-display/#listview
+from django.views.generic import ListView
+
 # let's import our custom mixin
 # that will check for a teacher
 from core.mixins import IsTeacherRoleMixin
@@ -26,15 +29,27 @@ def is_teacher(user):
     return user.role == "teacher"
 
 
+# let's rewrite this using our listview generic template
+class AnnouncementListView(LoginRequiredMixin, ListView):
+    # where in the orm we're fetching
+    model = Announcement
+    template_name = "announcements/announcement_list.html"
+    # this is the variable to loop over in the template
+    context_object_name = "announcements"
+    ordering = "-created_at"  # most recent first
+
+    # the idea here is that you don't need to write the list view
+
+
 # instead of using the login_required decorator
 # we're going to use the mixin instead of the method decorator.
 # docs: https://docs.djangoproject.com/en/5.2/topics/auth/default/#the-loginrequiredmixin-mixin
-class AnnouncementListView(LoginRequiredMixin, View):
-    template_name = "announcements/announcement_list.html"
+# class AnnouncementListView(LoginRequiredMixin, View):
+#     template_name = "announcements/announcement_list.html"
 
-    def get(self, request):
-        announcements = Announcement.objects.all().order_by("-created_at")
-        return render(request, self.template_name, {"announcements": announcements})
+#     def get(self, request):
+#         announcements = Announcement.objects.all().order_by("-created_at")
+#         return render(request, self.template_name, {"announcements": announcements})
 
 
 # we're going to remove the method decorator in favour of our IsTeacherRoleMixin
