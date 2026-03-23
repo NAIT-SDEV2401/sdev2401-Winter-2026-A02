@@ -13,5 +13,5 @@ class IsTeacherRoleMixin(UserPassesTestMixin):
         # is_teacher function
         # we're going to get the user on the self.request
         # which is defined in our class.
-
+        breakpoint()
         return self.request.user.role == "Teacher"

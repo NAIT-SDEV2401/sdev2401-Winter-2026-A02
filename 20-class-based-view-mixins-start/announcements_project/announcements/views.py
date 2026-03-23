@@ -12,10 +12,12 @@ from django.contrib.auth.decorators import (
 # Let's import the mixin here
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-# Create your views here.
 from .models import Announcement
 from .forms import AnnouncementForm
+
+# let's import our custom mixin
+# that will check for a teacher
+from core.mixins import IsTeacherRoleMixin
 
 
 # our test function here.
@@ -35,8 +37,11 @@ class AnnouncementListView(LoginRequiredMixin, View):
         return render(request, self.template_name, {"announcements": announcements})
 
 
-@method_decorator(user_passes_test(is_teacher, login_url="login"), name="dispatch")
-class CreateAnnouncementView(LoginRequiredMixin, View):
+# we're going to remove the method decorator in favour of our IsTeacherRoleMixin
+# this is going to perform the checks for the teacher role and the login required
+
+
+class CreateAnnouncementView(IsTeacherRoleMixin, LoginRequiredMixin, View):
     template_name = "announcements/create_announcement.html"
     form_class = AnnouncementForm
 
