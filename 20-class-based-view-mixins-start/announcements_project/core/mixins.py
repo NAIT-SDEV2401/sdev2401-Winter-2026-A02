@@ -2,6 +2,19 @@
 # docs here https://docs.djangoproject.com/en/5.2/topics/auth/default/#django.contrib.auth.mixins.UserPassesTestMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 
+# let's import time
+from datetime import datetime
+
+
+# is we're going to create a mixin that gives us the time
+class CurrentTimeMixin:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # add the current time to the context
+        context["time"] = datetime.now()
+
+        return context
+
 
 # so this is going to be a class where we define the test
 class IsTeacherRoleMixin(UserPassesTestMixin):

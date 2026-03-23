@@ -6,9 +6,12 @@ from django.views import View
 # docs: https://docs.djangoproject.com/en/5.2/topics/class-based-views/#subclassing-generic-views
 from django.views.generic import TemplateView
 
+# let's import and use our currenttime mixin
+from core.mixins import CurrentTimeMixin
+
 
 # inherit from our template view here
-class HomePageView(TemplateView):
+class HomePageView(CurrentTimeMixin, TemplateView):
     template_name = "web/home.html"
     # all a template view does is render the template
 
@@ -18,6 +21,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # let's add a title, and description to the template
+        breakpoint()
         context["title"] = "Super Cool LMS"
         context["description"] = "Our awesome LMS system that we created."
         # note context passed to template here.
