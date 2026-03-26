@@ -29,3 +29,25 @@ class ExerciseAPIView(APIView):
         )
         # return the response of the serializer data
         return Response(serializer.data)
+
+    # add a post request.
+    def post(self, request):
+        # deserialize the data
+        # as part of the request
+        # we're going to send json as part
+        # of the body here we're making it readable
+        # in python
+        serializer = ExerciseSerializer(
+            data=request.data,
+        )
+        # just like a form we need to check if it's
+        # valid.
+        if serializer.is_valid():
+            # we're going to create the instance
+            # save here will call our create
+            # inside of our serializer
+            exercise = serializer.save()  # returns a db instance
+            # then we're going to render the db instance
+            return Response(
+                ExerciseSerializer(exercise).data,
+            )

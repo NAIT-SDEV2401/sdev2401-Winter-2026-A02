@@ -30,4 +30,6 @@ class ExerciseSerializer(serializers.Serializer):
         # take our validated data
         # is a dictionary of values of name, exercise_type
         # and create an item.
-        return Exercise.objects.create(**validated_data)
+        return Exercise.objects.create(
+            **validated_data,
+        )
