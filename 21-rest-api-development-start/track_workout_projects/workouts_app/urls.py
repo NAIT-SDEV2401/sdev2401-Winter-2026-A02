@@ -6,7 +6,7 @@ from .views import ExerciseAPIView
 
 urlpatterns = [
     path(
-        "execise/",
+        "exercise/",
         ExerciseAPIView.as_view(),
         name="exercise-api",
     ),
