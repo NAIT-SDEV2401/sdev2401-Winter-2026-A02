@@ -11,11 +11,18 @@ from .models import Exercise
 
 
 class ExerciseAPIView(APIView):
+
+    # this is normally what you
+    # can use to access the database
+    # items
+    def get_queryset(self):
+        return Exercise.objects.all()
+
     # request method for get
     # looks a lot like a class based view in django
     def get(self, request):
         # getting them from the database.
-        exercises = Exercise.objects.all()
+        exercises = self.get_queryset()
         # i'm going serialize the data
         serializer = ExerciseSerializer(
             exercises,  # model instances
