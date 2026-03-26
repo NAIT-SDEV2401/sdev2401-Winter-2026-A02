@@ -11,7 +11,6 @@ from .models import Exercise
 
 
 class ExerciseAPIView(APIView):
-
     # this is normally what you
     # can use to access the database
     # items
