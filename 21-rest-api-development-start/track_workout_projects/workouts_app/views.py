@@ -8,3 +8,9 @@ from rest_framework.response import Response
 # we're going to import our own classes
 from .serializers import ExerciseSerializer
 from .models import Exercise
+
+
+class ExerciseAPIView(APIView):
+    # request method for get
+    # looks a lot like a class based view in django
+    def get(self, request):
