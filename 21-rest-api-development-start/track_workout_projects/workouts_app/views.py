@@ -51,3 +51,8 @@ class ExerciseAPIView(APIView):
             return Response(
                 ExerciseSerializer(exercise).data,
             )
+        # if it's not valid
+        return Response(
+            serializer.errors,
+            status=400,  # there's an error in the request.
+        )
