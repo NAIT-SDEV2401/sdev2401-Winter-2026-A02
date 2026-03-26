@@ -19,3 +19,15 @@ class ExerciseSerializer(serializers.Serializer):
     exercise_type = serializers.ChoiceField(
         choices=Exercise.EXERCISE_TYPES,
     )
+
+    # on a serializer it has the same functions
+    # as a form.
+    # there's a function called save
+    # that will either call create if it's new
+    # or update if it's an existing instance
+
+    def create(self, validated_data):
+        # take our validated data
+        # is a dictionary of values of name, exercise_type
+        # and create an item.
+        return Exercise.objects.create(**validated_data)
