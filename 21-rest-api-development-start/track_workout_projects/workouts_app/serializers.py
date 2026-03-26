@@ -7,7 +7,7 @@ from rest_framework import serializers
 from .models import Exercise
 
 
-# serializer the model of exercise
+# serializing the model of exercise
 class ExerciseSerializer(serializers.Serializer):
     # id is on every model and is handled
     # by the db, this is why it's read_only

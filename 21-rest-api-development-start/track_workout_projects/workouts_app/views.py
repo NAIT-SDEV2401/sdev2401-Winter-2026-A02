@@ -1,3 +1,10 @@
-from django.shortcuts import render
+# import the APIView (which is like the View class in django)
+from rest_framework import APIView
 
-# views here.
+# import the response which acts like render
+# except it'll respond with json
+from rest_framework.response import Response
+
+# we're going to import our own classes
+from .serializers import ExerciseSerializer
+from .models import Exercise
