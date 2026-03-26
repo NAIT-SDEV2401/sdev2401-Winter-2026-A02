@@ -14,3 +14,12 @@ class ExerciseAPIView(APIView):
     # request method for get
     # looks a lot like a class based view in django
     def get(self, request):
+        # getting them from the database.
+        exercises = Exercise.objects.all()
+        # i'm going serialize the data
+        serializer = ExerciseSerializer(
+            exercises,  # model instances
+            many=True,  # because there's more than one.
+        )
+        # return the response of the serializer data
+        return Response(serializer.data)
