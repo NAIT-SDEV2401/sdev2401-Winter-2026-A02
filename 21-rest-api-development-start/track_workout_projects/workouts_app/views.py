@@ -1,5 +1,5 @@
 # import the APIView (which is like the View class in django)
-from rest_framework import APIView
+from rest_framework.views import APIView
 
 # import the response which acts like render
 # except it'll respond with json
