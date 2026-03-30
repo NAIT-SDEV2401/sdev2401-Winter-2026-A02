@@ -95,7 +95,7 @@ class ExerciseAPIView(APIView):
         )
 
     def put(self, request, id):
-        self.update(request, id, partial=False)
+        return self.update(request, id, partial=False)
 
     def patch(self, request, id):
-        self.update(request, id, partial=True)
+        return self.update(request, id, partial=True)
