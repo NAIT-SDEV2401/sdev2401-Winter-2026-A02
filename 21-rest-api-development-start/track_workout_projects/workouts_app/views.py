@@ -75,10 +75,27 @@ class ExerciseAPIView(APIView):
     # update for put and patch
     def update(self, request, id, partial=False):
         # what do I need to do here.
-        pass
+        exercise = get_object_or_404(Exercise, id=id)
+        # pass an instance in the form. (pass the partial into the form.)
+        serializer = ExerciseSerializer(
+            exercise,
+            data=request.data,
+            partial=partial,
+        )
+        # if it's valid
+        if serializer.is_valid():
+            # save the data
+            updated_exercise = serializer.save()  # returns an instance
+            # this calls update under the hood.
+            return Response(ExerciseSerializer(updated_exercise).data)
+        # return a response
+        return Response(
+            serializer.errors,
+            status=400,
+        )
 
     def put(self, request, id):
-        pass
+        self.update(request, id, partial=False)
 
     def patch(self, request, id):
-        pass
+        self.update(request, id, partial=True)
