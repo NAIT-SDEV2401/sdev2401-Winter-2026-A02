@@ -20,6 +20,11 @@ class ExerciseSerializer(serializers.Serializer):
         choices=Exercise.EXERCISE_TYPES,
     )
 
+    # using your knowledge of forms and also some of the slides here
+    # try to validate name
+    # so that it can't be "sitting", "eating", "lying down"
+    # raise a validation error if it is
+
     # on a serializer it has the same functions
     # as a form.
     # there's a function called save
