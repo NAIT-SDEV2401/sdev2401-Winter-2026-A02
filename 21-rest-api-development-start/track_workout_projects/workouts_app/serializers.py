@@ -24,6 +24,13 @@ class ExerciseSerializer(serializers.Serializer):
     # try to validate name
     # so that it can't be "sitting", "eating", "lying down"
     # raise a validation error if it is
+    def validate_name(self, value):
+        INVALID_NAMES = ["sitting", "eating", "lying down"]
+        if value in INVALID_NAMES:
+            raise serializers.ValidationError(
+                f"Exercise name cannot be '{value}'",
+            )
+        return value
 
     # on a serializer it has the same functions
     # as a form.

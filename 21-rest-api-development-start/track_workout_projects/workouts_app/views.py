@@ -99,3 +99,6 @@ class ExerciseAPIView(APIView):
 
     def patch(self, request, id):
         return self.update(request, id, partial=True)
+
+    # build out the delete request.
+    # try it!
