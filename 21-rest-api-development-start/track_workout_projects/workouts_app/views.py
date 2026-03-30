@@ -102,3 +102,10 @@ class ExerciseAPIView(APIView):
 
     # build out the delete request.
     # try it!
+    def delete(self, request, id):
+        # get the instance.
+        exercise = get_object_or_404(Exercise, id=id)
+        # delete
+        exercise.delete()
+        # return a status of 204.
+        return Response(status=204)  # no content
