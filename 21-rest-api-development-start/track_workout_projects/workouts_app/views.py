@@ -24,7 +24,7 @@ class ExerciseAPIView(APIView):
     # specify the id parameter with a default value of None
     def get(self, request, id=None):
         # detail view
-        # check that hte id is not noe
+        # check that the id is not noe
         if id is not None:
             # get the single exercise from the db.
             exercise = get_object_or_404(Exercise, id=id)
@@ -71,3 +71,14 @@ class ExerciseAPIView(APIView):
             serializer.errors,
             status=400,  # there's an error in the request.
         )
+
+    # update for put and patch
+    def update(self, request, id, partial=False):
+        # what do I need to do here.
+        pass
+
+    def put(self, request, id):
+        pass
+
+    def patch(self, request, id):
+        pass

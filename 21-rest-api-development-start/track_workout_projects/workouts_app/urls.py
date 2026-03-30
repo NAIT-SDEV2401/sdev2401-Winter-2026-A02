@@ -17,7 +17,7 @@ urlpatterns = [
     # update the instance
     # delete the instance.
     path(
-        "exercise/<int:id>",
+        "exercise/<int:id>/",
         ExerciseAPIView.as_view(),
         name="exercise-api",
     ),

@@ -33,3 +33,14 @@ class ExerciseSerializer(serializers.Serializer):
         return Exercise.objects.create(
             **validated_data,
         )
+
+    # let's create the instance on save.
+    def update(self, instance, validated_data):
+        # update the instance with either validated data or
+        # the existing value and then save the instance.
+        instance.name = validated_data.get("name", instance.name)
+        instance.exercise_type = validated_data.get(
+            "exercise_type", instance.exercise_type
+        )
+        instance.save()
+        return instance
