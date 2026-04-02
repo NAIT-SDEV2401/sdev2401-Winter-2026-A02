@@ -2,6 +2,10 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+# we're going to import viewsets which
+# simplify the creation of a APIView
+from rest_framework import viewsets
+
 from .serializers import ExerciseSerializer
 from .models import Exercise
 
@@ -25,7 +29,6 @@ class ExerciseAPIView(APIView):
             # this will call the create method internally.
             return Response(ExerciseSerializer(exercise).data, status=201)
         return Response(serializer.errors, status=400)
-
 
     def update(self, request, id, partial=False):
         exercise = get_object_or_404(Exercise, id=id)
