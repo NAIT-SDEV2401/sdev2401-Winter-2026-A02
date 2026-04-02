@@ -28,7 +28,7 @@ class ExerciseSerializer(serializers.Serializer):
         return instance
 
 
-class WorkoutSerializer(serializers.Serializer):
+class WorkoutSerializer(serializers.ModelSerializer):
     # just like a form we're gooing
     # specify the fields and the model used
     class Meta:

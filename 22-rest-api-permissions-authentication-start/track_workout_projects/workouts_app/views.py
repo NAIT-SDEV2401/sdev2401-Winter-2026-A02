@@ -60,6 +60,10 @@ class ExerciseAPIView(APIView):
 # this viewset gives you all of the
 # api endpoints that we created above.
 class WorkoutViewSet(viewsets.ModelViewSet):
+    # let's define our permissions classes
+    # to allow all users
+    permission_classes = []
+
     # queryset (what is fetched from the db)
     queryset = Workout.objects.all()
     # note you can use get_queryset instead
