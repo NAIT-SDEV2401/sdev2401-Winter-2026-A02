@@ -6,6 +6,9 @@ from rest_framework.response import Response
 # simplify the creation of a APIView
 from rest_framework import viewsets
 
+# let's import the permissions from rest_framework
+from rest_framework.permissions import IsAuthenticated
+
 from .serializers import (
     ExerciseSerializer,
     WorkoutSerializer,
@@ -61,8 +64,8 @@ class ExerciseAPIView(APIView):
 # api endpoints that we created above.
 class WorkoutViewSet(viewsets.ModelViewSet):
     # let's define our permissions classes
-    # to allow all users
-    permission_classes = []
+    # to allow onlly authenticated users.
+    permission_classes = [IsAuthenticated]
 
     # queryset (what is fetched from the db)
     queryset = Workout.objects.all()

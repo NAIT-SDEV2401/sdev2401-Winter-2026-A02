@@ -133,11 +133,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Django REST framework settings
 REST_FRAMEWORK = {
     # we're going to add our default authentication classes
-    "DEFAULT_AUTHENTICATEION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
-        # if there's not a permissions_classes added
-        # we'll need to be logged in
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",  # Use token-based authentication
     ],
+    # if there's not a permissions_classes added
+    # we'll need to be logged in
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
