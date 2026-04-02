@@ -57,6 +57,8 @@ class ExerciseAPIView(APIView):
         return Response(status=204)
 
 
+# this viewset gives you all of the
+# api endpoints that we created above.
 class WorkoutViewSet(viewsets.ModelViewSet):
     # queryset (what is fetched from the db)
     queryset = Workout.objects.all()
