@@ -135,7 +135,8 @@ REST_FRAMEWORK = {
     # we're going to add our default authentication classes
     "DEFAULT_AUTHENTICATEION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
-        # if there's not permissions
+        # if there's not a permissions_classes added
+        # we'll need to be logged in
     ],
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
