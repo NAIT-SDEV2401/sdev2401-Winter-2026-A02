@@ -25,4 +25,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include("workouts_app.urls")),
     # add the token auth.
+    path(
+        "api/v1/token-auth/",
+        obtain_auth_token,
+        name="api_token",
+    ),
 ]
