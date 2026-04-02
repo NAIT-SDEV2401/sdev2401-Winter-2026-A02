@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import ExerciseAPIView, WorkoutViewSet
 
 # import routers from rest framework
 from rest_framework.routers import DefaultRouter
 
+from .views import ExerciseAPIView, WorkoutViewSet
 
 # this is going to specify the urls
 # for the detail and not detailed views
