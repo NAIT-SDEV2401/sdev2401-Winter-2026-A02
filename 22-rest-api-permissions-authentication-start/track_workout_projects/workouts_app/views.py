@@ -6,11 +6,17 @@ from rest_framework.response import Response
 # simplify the creation of a APIView
 from rest_framework import viewsets
 
-from .serializers import ExerciseSerializer
-from .models import Exercise
+from .serializers import (
+    ExerciseSerializer,
+    WorkoutSerializer,
+)
+
+# import Workout from the models
+from .models import Exercise, Workout
 
 
 class ExerciseAPIView(APIView):
+
     def get(self, request, id=None):
         # detail view
         if id:
@@ -49,3 +55,12 @@ class ExerciseAPIView(APIView):
         exercise = get_object_or_404(Exercise, id=id)
         exercise.delete()
         return Response(status=204)
+
+
+class WorkoutViewSet(viewsets.ModelViewSet):
+    # queryset (what is fetched from the db)
+    queryset = Workout.objects.all()
+    # note you can use get_queryset instead
+    # if you want to filter based on the
+    # user from the request.
+    serializer_class = WorkoutSerializer
