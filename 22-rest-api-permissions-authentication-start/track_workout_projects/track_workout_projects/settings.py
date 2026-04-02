@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # rest framework
     "rest_framework",
-
+    # we're going to add a token to our
+    # apps here.
+    "rest_framework.authtoken",
+    # we're going to have to create some
+    # migrations for the above to work.
     # custom apps
     "workouts_app",
 ]
