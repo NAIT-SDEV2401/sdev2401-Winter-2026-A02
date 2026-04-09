@@ -74,4 +74,5 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
             # foreign key fields
             "workout",
             "exercise",
+            # these will only be the id.
         ]
