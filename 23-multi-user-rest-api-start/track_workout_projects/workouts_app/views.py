@@ -119,5 +119,10 @@ class WorkoutLogAPIView(APIView):
             # the detail for it.
             return Response(
                 WorkoutLogReadOnlySerializer(workout_log).data,
-                status=201,
+                status=201,  # created status.
             )
+        # we need to handle the errors
+        return Response(
+            serializer.errors,  # this triggered if not valid (above)
+            status=400,  # bad request
+        )
