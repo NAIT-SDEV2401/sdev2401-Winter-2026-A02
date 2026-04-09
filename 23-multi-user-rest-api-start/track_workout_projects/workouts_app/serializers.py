@@ -76,3 +76,7 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
             "exercise",
             # these will only be the id.
         ]
+
+    # note here inside of a model searilzer
+    # the save/create/update methods are created
+    # for you automatically.

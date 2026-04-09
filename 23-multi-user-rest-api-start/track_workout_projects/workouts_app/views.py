@@ -103,3 +103,13 @@ class WorkoutLogAPIView(APIView):
             many=True,  # this because it's a queryset.
         )
         return Response(serializer.data)
+
+    def post(self, request):
+
+        # get serializer class which will be
+        # WorkoutLogCreateUpdateSerializer
+        serializer = self.get_serializer_class()(
+            data=request.data  # our raw data from the request
+        )
+        if serializer.is_valid(): # clean/sanitization step
+            # save this to a database.
