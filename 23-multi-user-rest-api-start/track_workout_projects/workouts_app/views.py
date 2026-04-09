@@ -76,6 +76,10 @@ class WorkoutLogAPIView(APIView):
         # otherwise "GET"
         return WorkoutLogReadOnlySerializer
 
+    # override the queryset value for the apiview
+    def get_queryset(self):
+        return WorkoutLog.objects.all()
+
     # this will be used for both detail and list.
     def get(self, request, id=None):
         # detail view
@@ -88,7 +92,7 @@ class WorkoutLogAPIView(APIView):
             return Response(serializer.data)
 
         # list view
-        workout_logs = WorkoutLog.objects.all()
+        workout_logs = self.get_queryset()
         # we're going to use our new class to serialize
         # the data since it's get it will use the
         # WorkoutLogReadOnlySerializer
