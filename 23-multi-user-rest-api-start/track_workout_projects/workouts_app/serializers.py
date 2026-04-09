@@ -36,6 +36,13 @@ class ExerciseSerializer(serializers.Serializer):
 
 # what we're going to do is serialize the data for workoutlog
 class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
+    # override the fields of workout and exercise using
+    # the existing serializers.
+    workout = WorkoutSerializer(read_only=True)
+    exercise = ExerciseSerializer(read_only=True)
+    # if you have many in the relationship
+    # you need to add the many=True arguemnt to the serializer
+
     # write what you need for the serializer
     class Meta:
         model = WorkoutLog
@@ -47,6 +54,6 @@ class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
             "weight_kg",
             "time",
             # foreign key fields
-            "workout",
-            "exercise",
+            "workout",  # look above for the overide of the serialization
+            "exercise",  # look above for the overide of the serialization
         ]
