@@ -111,5 +111,13 @@ class WorkoutLogAPIView(APIView):
         serializer = self.get_serializer_class()(
             data=request.data  # our raw data from the request
         )
-        if serializer.is_valid(): # clean/sanitization step
+        if serializer.is_valid():  # clean/sanitization step
             # save this to a database.
+            workout_log = serializer.save()
+
+            # respond with a different serializer that will give
+            # the detail for it.
+            return Response(
+                WorkoutLogReadOnlySerializer(workout_log).data,
+                status=201,
+            )
