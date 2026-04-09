@@ -31,6 +31,7 @@ class WorkoutLog(models.Model):
 
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE, related_name="logs")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    # non foreignkey fields first.
     sets = models.IntegerField(blank=True, null=True)
     reps = models.IntegerField(blank=True, null=True)
     weight_kg = models.DecimalField(
