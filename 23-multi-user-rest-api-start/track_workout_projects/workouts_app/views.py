@@ -81,7 +81,8 @@ class WorkoutLogAPIView(APIView):
 
     # override the queryset value for the apiview
     def get_queryset(self):
-        return WorkoutLog.objects.all()
+        # return the list of only that users workoutlogs
+        return WorkoutLog.objects.filter(user=self.request.user)
 
     # this will be used for both detail and list.
     def get(self, request, id=None):
@@ -151,7 +152,9 @@ class WorkoutLogAPIView(APIView):
         if serializer.is_valid():
             # above calls the field validation and the cross validation.
             # we're going to save.
-            updated_workout_log = serializer.save()
+            updated_workout_log = serializer.save(
+                user=self.request.user,
+            )
 
             return Response(
                 WorkoutLogReadOnlySerializer(updated_workout_log).data,
