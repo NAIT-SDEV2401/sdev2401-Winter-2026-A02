@@ -86,11 +86,25 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
     # this is going to use multiple fields so we use the
     # validate method.
     def validate(self, data):
-        exercise_id = data.get("excerise")  # none if not defined
+        exercise = data.get("exercise")  # none if not defined
+        # check to see if this is a patch/put
+        if self.instance and exercise is None:
+            exercise = self.instance.exercise
+
         weight_kg = data.get("weight_kg")  # none if not defined
 
         # we're going to skip this if partial update
         # and those fields aren't defined.
-        if exercise_id is None or weight_kg is None:
+        if exercise is None or weight_kg is None:
             # a successful result (return the data.)
             return data
+
+        # right here we're going to permform the validation.
+        if exercise.exercise_type == "cardio" and weight_kg is not None:
+            # this is an error we need to raise it.
+            raise serializers.ValidationError(
+                "Cardio Exercises cannot have a weight",
+            )
+
+        # default of returning the data
+        return data
