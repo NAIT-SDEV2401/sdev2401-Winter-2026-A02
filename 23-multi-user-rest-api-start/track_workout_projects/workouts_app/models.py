@@ -34,7 +34,10 @@ class WorkoutLog(models.Model):
 
     # let's add the user
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )
     # when you delete a user just set this item to null.
 

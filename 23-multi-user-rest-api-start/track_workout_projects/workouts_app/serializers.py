@@ -1,5 +1,10 @@
 from rest_framework import serializers
 
+# we're going to import the default user
+# if you were to customize you'd need to import
+# that custom user.
+from django.contrib.auth.models import User
+
 from .models import Exercise, Workout, WorkoutLog
 
 
@@ -34,12 +39,21 @@ class ExerciseSerializer(serializers.Serializer):
         return instance
 
 
+# I'm going to seriliazer the user
+class UserReadOnlySerializer(serializers.ModelSerializer):
+    # let's serialize
+    class Meta:
+        model = User
+        fields = ["id", "username", "email"]
+
+
 # what we're going to do is serialize the data for workoutlog
 class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
     # override the fields of workout and exercise using
     # the existing serializers.
     workout = WorkoutSerializer(read_only=True)
     exercise = ExerciseSerializer(read_only=True)
+    user = UserReadOnlySerializer(read_only=True)
     # if you have many in the relationship
     # you need to add the many=True arguemnt to the serializer
 
@@ -56,12 +70,17 @@ class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
             # foreign key fields
             "workout",  # look above for the overide of the serialization
             "exercise",  # look above for the overide of the serialization
+            "user",  # look above at the serializer
         ]
 
 
 # create/update serializer (going to be used for
 # post, patch, put deserialization.)
 class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
+    # on the workout create we don't need to add the user
+    # on the request
+    # because it'll be part of the request.
+    # we'll pass that in, in the view.
     class Meta:
         model = WorkoutLog
         fields = [
@@ -75,6 +94,8 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
             "workout",
             "exercise",
             # these will only be the id.
+            # add the user below.
+            "user",
         ]
 
     # note here inside of a model searilzer
