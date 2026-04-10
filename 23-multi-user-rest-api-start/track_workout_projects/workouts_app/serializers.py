@@ -108,3 +108,17 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
 
         # default of returning the data
         return data
+
+    # let's validate that our system can't have more than 500 for weight
+    # and can't be negative.
+    def validate_weight_kg(self, value):
+        # handle the negative case.
+        if value is not None and value < 0:
+            raise serializers.ValidationError("Weight can't be negative")
+        # handle the case that it's can't be greater than 500
+        elif value is not None and value > 500:
+            raise serializers.ValidationError(
+                "Come on. Weight can't be greater than 500",
+            )
+        # this is the positive.
+        return value
