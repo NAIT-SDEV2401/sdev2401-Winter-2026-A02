@@ -116,7 +116,10 @@ class WorkoutLogAPIView(APIView):
         )
         if serializer.is_valid():  # clean/sanitization step
             # save this to a database.
-            workout_log = serializer.save()
+            workout_log = serializer.save(
+                # we're going to add the user on save.
+                user=self.request.user
+            )
 
             # this is your money magic placement.
 
