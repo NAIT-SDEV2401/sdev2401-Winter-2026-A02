@@ -155,7 +155,10 @@ class WorkoutLogAPIView(APIView):
             )
 
         # errors are given from the is_valid function here.
-        return Response(serializer.errors)
+        return Response(
+            serializer.errors,
+            status=400,
+        )
 
     # full replacement of the fields in the instance
     def put(self, request, id):
