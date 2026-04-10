@@ -145,7 +145,7 @@ class WorkoutLogAPIView(APIView):
             # all the fields or just part of the fields
         )
         # is this valid
-        if serializer.id_valid():
+        if serializer.is_valid():
             # above calls the field validation and the cross validation.
             # we're going to save.
             updated_workout_log = serializer.save()
@@ -153,6 +153,9 @@ class WorkoutLogAPIView(APIView):
             return Response(
                 WorkoutLogReadOnlySerializer(updated_workout_log).data,
             )
+
+        # errors are given from the is_valid function here.
+        return Response(serializer.errors)
 
     # full replacement of the fields in the instance
     def put(self, request, id):
