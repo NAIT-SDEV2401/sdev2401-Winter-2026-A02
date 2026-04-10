@@ -80,3 +80,17 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
     # note here inside of a model searilzer
     # the save/create/update methods are created
     # for you automatically.
+
+    # validate that cardio workouts can't have weights
+    # our specific platform
+    # this is going to use multiple fields so we use the
+    # validate method.
+    def validate(self, data):
+        exercise_id = data.get("excerise")  # none if not defined
+        weight_kg = data.get("weight_kg")  # none if not defined
+
+        # we're going to skip this if partial update
+        # and those fields aren't defined.
+        if exercise_id is None or weight_kg is None:
+            # a successful result (return the data.)
+            return data
