@@ -131,3 +131,33 @@ class WorkoutLogAPIView(APIView):
             serializer.errors,  # this triggered if not valid (above)
             status=400,  # bad request
         )
+
+    # let's create the update methods that's going to
+    # give us the ability to change a workoutlog.
+    def update(self, request, id, partial=False):
+        # we need to get the object
+        workout_log = get_object_or_404(WorkoutLog, id=id)
+        # this is essentially being done already this is
+        serializer = self.get_serializer_class()(
+            workout_log,  # instance from the db you want to update
+            data=request.data,  # what we want to change the instance with.
+            partial=partial,  # going to make the distinction in the serializer if you're modifying
+            # all the fields or just part of the fields
+        )
+        # is this valid
+        if serializer.id_valid():
+            # above calls the field validation and the cross validation.
+            # we're going to save.
+            updated_workout_log = serializer.save()
+
+            return Response(
+                WorkoutLogReadOnlySerializer(updated_workout_log).data,
+            )
+
+    # full replacement of the fields in the instance
+    def put(self, request, id):
+        return self.update(request, id, partial=False)
+
+    # only going to replace a few.
+    def patch(self, request, id):
+        return self.update(request, id, partial=True)
