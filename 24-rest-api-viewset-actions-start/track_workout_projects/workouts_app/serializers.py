@@ -12,8 +12,31 @@ class WorkoutSerializer(serializers.ModelSerializer):
         fields = ["id", "title", "date"]
 
 
+class WorkoutLogSimpleDetailReadOnlySerializer(serializers.ModelSerializer):
+    # I wanonly want to show the basic fields and the exercise.
+    class Meta:
+        model = WorkoutLog
+        fields = [
+            # fields that are part of the WorkoutLog table
+            "id",
+            "sets",
+            "reps",
+            "weight_kg",
+            "time",
+            # i'm also going to include the exercise
+            "exercise",
+        ]
+        # We're going to add a depth of 1 to show the exercise info.
+        depth = 1
+
+
 # is we're going to add a serializer for the detail action.
 class WorkoutDetailReadOnlySerializer(serializers.ModelSerializer):
+    logs = WorkoutLogSimpleDetailReadOnlySerializer(
+        read_only=True,
+        many=True,  # this is because there's many logs to one workout
+    )
+
     class Meta:
         model = Workout
         fields = [
@@ -24,6 +47,11 @@ class WorkoutDetailReadOnlySerializer(serializers.ModelSerializer):
             # we're going to add the logs field
             "logs",
         ]
+        # let's add a depth field to show the data in the relationship
+        # you can see that a depth on this serializer
+        # provides a big problem, it shows the user password, firstname
+        # last_name, too much information.
+        # depth = 2
 
 
 class ExerciseSerializer(serializers.Serializer):
