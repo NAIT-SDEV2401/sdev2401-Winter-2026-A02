@@ -4,6 +4,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
+# we're going to import our new permission here.
+from .permissions import IsOwnerOfResourceOrReadOnly
 
 from .serializers import (
     ExerciseSerializer,
@@ -66,7 +68,7 @@ class ExerciseAPIView(APIView):
 
 class WorkoutLogAPIView(APIView):
     # permissions
-    permissions_classes = [IsAuthenticated]
+    permissions_classes = [IsOwnerOfResourceOrReadOnly]
 
     # override the default serializer_class and make it
     # change based on the type of request that we
@@ -141,6 +143,14 @@ class WorkoutLogAPIView(APIView):
     def update(self, request, id, partial=False):
         # we need to get the object
         workout_log = get_object_or_404(WorkoutLog, id=id)
+
+        # we are updating an existing item and we only want the user to
+        # be able to modify their own.
+        self.check_object_permissions(
+            request,  # the request
+            workout_log,  # the instance that is passed.
+        )
+
         # this is essentially being done already this is
         serializer = self.get_serializer_class()(
             workout_log,  # instance from the db you want to update
