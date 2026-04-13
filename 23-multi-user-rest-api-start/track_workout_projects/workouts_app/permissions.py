@@ -15,6 +15,7 @@ class IsOwnerOfResourceOrReadOnly(BasePermission):
 
     # has object permission is the permission on a specific object.
     # returns true or false, true if they have permission, false if they don't.
+    # this you need to use check_object_permissions on a specific object.
     def has_object_permission(self, request, view, obj):
 
         # we're going to check if the request.method is going to be a "safe method"
@@ -26,3 +27,15 @@ class IsOwnerOfResourceOrReadOnly(BasePermission):
         # note 2: we will compare that user to the request.user field
         # this is taken from the token provided.
         return obj.user == request.user
+
+    # notice that we've removed the permission of isAuthenticated.
+    # to check if authenticated we're going to add the has_permission
+    # which runs on every view without
+    def has_permission(self, request, view):
+        # anonymous user has no user name so we can perform a check
+        # if they have a username they are logged and if they don't they aren't!
+        if request.user.username == "":  # anonymous user if true
+            return False
+
+        # where they have a username (they are logged in)
+        return True
