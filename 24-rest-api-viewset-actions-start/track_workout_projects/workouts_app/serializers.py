@@ -4,10 +4,27 @@ from .models import Exercise, Workout, WorkoutLog
 from django.conf import settings
 from django.contrib.auth.models import User
 
+
+# this is for the Viewset serialization as whole.
 class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['id', 'title', 'date']
+        fields = ["id", "title", "date"]
+
+
+# is we're going to add a serializer for the detail action.
+class WorkoutDetailReadOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Workout
+        fields = [
+            # same fields as above
+            "id",
+            "title",
+            "date",
+            # we're going to add the logs field
+            "logs",
+        ]
+
 
 class ExerciseSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -17,23 +34,29 @@ class ExerciseSerializer(serializers.Serializer):
     def validate_name(self, value):
         INVALID_EXERCISE_NAMES = ["sitting", "lying down"]
         if value in INVALID_EXERCISE_NAMES:
-            raise serializers.ValidationError("Exercise name cannot be 'sitting' or 'lying down'.")
+            raise serializers.ValidationError(
+                "Exercise name cannot be 'sitting' or 'lying down'."
+            )
         return value
 
     def create(self, validated_data):
         return Exercise.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.exercise_type = validated_data.get('exercise_type', instance.exercise_type)
+        instance.name = validated_data.get("name", instance.name)
+        instance.exercise_type = validated_data.get(
+            "exercise_type", instance.exercise_type
+        )
         instance.save()
         return instance
+
 
 # user serializer to only include public information.
 class UserReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ["id", "username", "email"]
+
 
 # Read only serializer for viewing workouts that includes the user field
 class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
@@ -47,36 +70,37 @@ class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutLog
         fields = [
-            'id',
-            'sets',
-            'reps',
-            'weight_kg',
-            'time',
+            "id",
+            "sets",
+            "reps",
+            "weight_kg",
+            "time",
             # override the default
-            'workout',
-            'exercise',
+            "workout",
+            "exercise",
             # include the user field in the read only serializer
-            'user'
+            "user",
         ]
         # if you add the depth option to the serializer's Meta class,
         # it will automatically include the related data for foreign key fields in the response. In this case, it will include the user's information in the response when viewing workouts.
         depth = 1
+
 
 # Serializer for creating/updating workouts that doesn't include the user field
 class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutLog
         fields = [
-            'id',
-            'sets',
-            'reps',
-            'weight_kg',
-            'time',
+            "id",
+            "sets",
+            "reps",
+            "weight_kg",
+            "time",
             # foreign key fields
-            'workout',
-            'exercise',
+            "workout",
+            "exercise",
             # include the user field.
-            'user'
+            "user",
         ]
 
     def validate_weight_kg(self, value):
@@ -90,9 +114,8 @@ class WorkoutLogCreateUpdateSerializer(serializers.ModelSerializer):
     def validate(self, data):
         # this will be an exercise instance because we're using a ModelSerializer and the exercise field is a foreign key to the Exercise model
 
-
-        exercise = data.get('exercise')
-        weight_kg = data.get('weight_kg')
+        exercise = data.get("exercise")
+        weight_kg = data.get("weight_kg")
 
         # skip this if a partial update (used for patch)
         if exercise is None or weight_kg is None:

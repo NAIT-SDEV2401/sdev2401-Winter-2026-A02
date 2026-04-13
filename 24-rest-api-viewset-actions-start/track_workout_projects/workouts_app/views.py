@@ -5,9 +5,17 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from .permissions import IsOwnerOfResourceOrReadOnly
-from .serializers import( ExerciseSerializer, WorkoutSerializer
-                         , WorkoutLogReadOnlySerializer, WorkoutLogCreateUpdateSerializer)
+from .serializers import (
+    ExerciseSerializer,
+    WorkoutSerializer,
+    WorkoutDetailReadOnlySerializer,
+    WorkoutLogReadOnlySerializer,
+    WorkoutLogCreateUpdateSerializer,
+)
 from .models import Exercise, Workout, WorkoutLog
+
+# we're going using the action decorator to add detail to the workout viewset.
+from rest_framework.decorators import action
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
@@ -15,9 +23,24 @@ class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
 
+    @action(
+        detail=True,  # which means the id (or pk, primary key, will be passed in)
+        methods=["get"],  # types of methods allowed for this action,
+        url_path="detail",  # this will be trailing the http://localhost:8000/api/v1/workouts/IDHERE/ (will include detail at the end.)
+    )
+    def workout_logs(self, request, pk=None):  # just the default for a detail action.
+        # we're going to get the object
+        workout = self.get_object()
+
+        # serialize that object
+        serializer = WorkoutDetailReadOnlySerializer(workout)
+        # return the response of that object.
+        return Response(serializer.data)
+
 
 class ExerciseAPIView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get(self, request, id=None):
         # detail view
         if id:
@@ -61,9 +84,8 @@ class ExerciseAPIView(APIView):
 class WorkoutLogAPIView(APIView):
     permission_classes = [IsOwnerOfResourceOrReadOnly]
 
-
     def get_serializer_class(self):
-        if self.request.method in ['POST', 'PUT', 'PATCH']:
+        if self.request.method in ["POST", "PUT", "PATCH"]:
             return WorkoutLogCreateUpdateSerializer
         return WorkoutLogReadOnlySerializer
 
@@ -92,7 +114,9 @@ class WorkoutLogAPIView(APIView):
         # This triggers the 'has_object_permission' method in IsOwner
         self.check_object_permissions(request, workout_log)
 
-        serializer = self.get_serializer_class()(workout_log, data=request.data, partial=partial)
+        serializer = self.get_serializer_class()(
+            workout_log, data=request.data, partial=partial
+        )
         if serializer.is_valid():
             workout_log = serializer.save(user=request.user)
             return Response(WorkoutLogReadOnlySerializer(workout_log).data)
