@@ -68,7 +68,7 @@ class ExerciseAPIView(APIView):
 
 class WorkoutLogAPIView(APIView):
     # permissions
-    permissions_classes = [IsOwnerOfResourceOrReadOnly]
+    permission_classes = [IsOwnerOfResourceOrReadOnly]
 
     # override the default serializer_class and make it
     # change based on the type of request that we

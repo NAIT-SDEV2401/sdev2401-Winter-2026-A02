@@ -1,5 +1,7 @@
 # we're going to create a permission
 # that users can read the data but not change the data if it's not theirs.
+# note: if you have a core module with all of your auth, it would be better to put this
+# permission there.
 
 # we're going to need to import from BasePermission from rest framework.
 from rest_framework.permissions import BasePermission
@@ -14,6 +16,7 @@ class IsOwnerOfResourceOrReadOnly(BasePermission):
     # has object permission is the permission on a specific object.
     # returns true or false, true if they have permission, false if they don't.
     def has_object_permission(self, request, view, obj):
+
         # we're going to check if the request.method is going to be a "safe method"
         if request.method in ("GET", "HEAD", "OPTIONS"):
             return True
