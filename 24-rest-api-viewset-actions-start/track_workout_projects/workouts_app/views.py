@@ -30,6 +30,7 @@ class WorkoutViewSet(viewsets.ModelViewSet):
     # search
     filter_backends = [filters.SearchFilter]
     search_fields = ["title"]
+    # search fbased on the title
 
     @action(
         detail=True,  # which means the id (or pk, primary key, will be passed in)
