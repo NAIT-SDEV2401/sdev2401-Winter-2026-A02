@@ -4,6 +4,10 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
+# import the serach filters
+from rest_framework import filters
+
+
 from .permissions import IsOwnerOfResourceOrReadOnly
 from .serializers import (
     ExerciseSerializer,
@@ -22,6 +26,10 @@ class WorkoutViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
+    # this is going to add the query parameter of
+    # search
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["title"]
 
     @action(
         detail=True,  # which means the id (or pk, primary key, will be passed in)
